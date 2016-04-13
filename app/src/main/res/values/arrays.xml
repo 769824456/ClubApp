@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="scale">
+        <item>5人以下</item>
+        <item>5~10人</item>
+        <item>10~20人</item>
+        <item>20~50人</item>
+        <item>50人以上</item>
+    </string-array>
+</resources>

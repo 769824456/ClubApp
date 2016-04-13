@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+    <include
+        android:id="@+id/tl_login"
+        layout="@layout/layout_toolbar"/>
+
+
+    <ImageView
+        android:id="@+id/iv_splash_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_splash_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_splash_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="健康会所"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_splash_title"
+        android:orientation="vertical">
+
+        <!--mobile-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/ic_login"
+                android:layout_height="@dimen/ic_login"
+                android:layout_margin="16dp"
+                android:src="@mipmap/ic_login_account"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="手机号"
+                android:inputType="phone"
+                android:textSize="14sp"/>
+        </LinearLayout>
+        <!--mobile-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/ic_login"
+                android:layout_height="@dimen/ic_login"
+                android:layout_margin="16dp"
+                android:src="@mipmap/ic_login_pwd"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码"
+                android:inputType="phone"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:text="登  录"
+            android:textSize="14sp"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="26dp"
+                android:text="忘记密码?"/>
+
+            <TextView
+                android:id="@+id/tv_login_reg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="26dp"
+                android:text="注册"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

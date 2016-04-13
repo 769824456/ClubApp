@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_member"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="会员"/>
+        <item
+            android:id="@+id/nav_daily"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="日结"/>
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="统计"/>
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="店员"/>
+    </group>
+
+
+</menu>
