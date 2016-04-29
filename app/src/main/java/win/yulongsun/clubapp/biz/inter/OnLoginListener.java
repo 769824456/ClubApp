@@ -1,7 +1,7 @@
 package win.yulongsun.clubapp.biz.inter;
 
 
-import win.yulongsun.clubapp.bean.User;
+import win.yulongsun.clubapp.entity.UserVo;
 
 /*
  * PACKAGE_NAME :cn.ace.android_mvp.biz.inter
@@ -13,6 +13,6 @@ import win.yulongsun.clubapp.bean.User;
  * NOTE : 登录回调接口
  */
 public interface OnLoginListener {
-    void LoginSuccess(User user);
+    void LoginSuccess(UserVo mUserVo);
     void LoginFailed();
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -7,4 +8,163 @@
     <include
         android:id="@+id/tl_user_add"
         layout="@layout/layout_toolbar"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="@color/divider"
+                app:civ_border_width="1dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_login"
+                    android:layout_height="@dimen/ic_login"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_login_account"/>
+
+                <EditText
+                    style="@style/UserAddPageEditText"
+                    android:hint="手机号"
+                    android:inputType="phone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_login"
+                    android:layout_height="@dimen/ic_login"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_login_pwd"/>
+
+                <EditText
+                    style="@style/UserAddPageEditText"
+                    android:hint="密码"
+                    android:inputType="textPassword"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_login"
+                    android:layout_height="@dimen/ic_login"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_login_pwd"/>
+
+                <EditText
+                    style="@style/UserAddPageEditText"
+                    android:hint="工号"
+                    android:inputType="number"
+                    android:maxLength="10"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_login"
+                    android:layout_height="@dimen/ic_login"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_login_account"/>
+
+                <EditText
+                    style="@style/UserAddPageEditText"
+                    android:hint="用户名"
+                    android:inputType="phone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_login"
+                    android:layout_height="@dimen/ic_login"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_login_pwd"/>
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="男"
+                        android:textColor="@color/secondary_text"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        android:textColor="@color/secondary_text"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_login"
+                    android:layout_height="@dimen/ic_login"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_login_pwd"/>
+
+                <EditText
+                    style="@style/UserAddPageEditText"
+                    android:hint="地址"
+                    android:inputType="phone"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
 
+//ListView Adapter基类
 public abstract class CommonAdapter extends BaseAdapter {
     private List           mList;
     private LayoutInflater mLayoutInflater;

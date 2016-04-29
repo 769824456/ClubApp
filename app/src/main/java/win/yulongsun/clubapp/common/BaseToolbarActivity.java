@@ -1,4 +1,4 @@
-package win.yulongsun.clubapp.activity;
+package win.yulongsun.clubapp.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.common.BaseActivity;
 
 /**
  * PROJECT_NAME : ClubApp

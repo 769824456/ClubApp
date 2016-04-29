@@ -30,8 +30,8 @@
         <activity android:name=".activity.member.MemberAddActivity"/>
         <activity android:name=".activity.statistics.StatisticsActivity"/>
         <activity android:name=".activity.daily.DailyActivity"/>
-        <activity android:name=".activity.user.UserActivity"/>
-        <activity android:name=".activity.user.UserAddActivity"/>
+        <activity android:name=".activity.mUserVo.UserActivity"/>
+        <activity android:name=".activity.mUserVo.UserAddActivity"/>
     </application>
 
 </manifest>

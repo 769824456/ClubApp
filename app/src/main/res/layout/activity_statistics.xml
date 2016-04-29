@@ -8,4 +8,16 @@
         android:id="@+id/tl_statistics"
         layout="@layout/layout_toolbar"/>
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart_statistics"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart_statistics"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
 </LinearLayout>

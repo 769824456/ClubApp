@@ -11,9 +11,16 @@
         android:id="@+id/tl_member"
         layout="@layout/layout_toolbar"/>
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srf_member"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

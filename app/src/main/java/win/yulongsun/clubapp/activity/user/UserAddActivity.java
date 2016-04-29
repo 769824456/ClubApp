@@ -5,7 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import win.yulongsun.clubapp.R;
-import win.yulongsun.clubapp.activity.BaseToolbarActivity;
+import win.yulongsun.clubapp.common.BaseToolbarActivity;
 
 //添加店员
 public class UserAddActivity extends BaseToolbarActivity {

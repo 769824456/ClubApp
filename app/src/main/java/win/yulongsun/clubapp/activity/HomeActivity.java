@@ -26,6 +26,7 @@ import win.yulongsun.clubapp.activity.daily.DailyActivity;
 import win.yulongsun.clubapp.activity.member.MemberActivity;
 import win.yulongsun.clubapp.activity.statistics.StatisticsActivity;
 import win.yulongsun.clubapp.activity.user.UserActivity;
+import win.yulongsun.clubapp.common.BaseActivity;
 
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {

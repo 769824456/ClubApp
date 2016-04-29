@@ -3,11 +3,11 @@ package win.yulongsun.clubapp.activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import win.yulongsun.clubapp.R;
-import win.yulongsun.clubapp.bean.User;
+import win.yulongsun.clubapp.entity.UserVo;
+import win.yulongsun.clubapp.common.BaseActivity;
 import win.yulongsun.clubapp.presenter.UserLoginPresenter;
 import win.yulongsun.clubapp.view.IUserLoginView;
 
@@ -76,8 +76,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     /*登录成功，进入主页*/
     @Override
-    public void toMainActivity(User user) {
-        Toast.makeText(this, user.getUsername() +
+    public void toMainActivity(UserVo mUserVo) {
+        Toast.makeText(this, mUserVo.getUsername() +
                 " login success , to MainActivity", Toast.LENGTH_SHORT).show();
     }
 

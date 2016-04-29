@@ -23,7 +23,7 @@ public class MemberAdapter extends CommonAdapter {
     @Override public View getView(int position, View convertView, ViewGroup parent) {
         HolderView holder;
         if (convertView == null) {
-            convertView = getLayoutInflater().inflate(R.layout.item_member, null);
+            convertView = getLayoutInflater().inflate(R.layout.item_list_member, null);
             holder = new HolderView();
 //            holder.tvUser = (TextView) convertView.findViewById(R.id.tvUser);
             convertView.setTag(holder);

@@ -1,7 +1,7 @@
 package win.yulongsun.clubapp.view;
 
 
-import win.yulongsun.clubapp.bean.User;
+import win.yulongsun.clubapp.entity.UserVo;
 
 /*
  * PACKAGE_NAME :cn.ace.android_mvp.view
@@ -25,7 +25,7 @@ public interface IUserLoginView {
 
     void hideLoading();
 
-    void toMainActivity(User user);//登陆成功
+    void toMainActivity(UserVo mUserVo);//登陆成功
 
     void showFailedError();
 

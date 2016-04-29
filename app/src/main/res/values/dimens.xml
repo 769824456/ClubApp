@@ -9,4 +9,5 @@
     <dimen name="ic_reg">20dp</dimen>
     <dimen name="ic_login">25dp</dimen>
     <dimen name="toolbar_text">18sp</dimen>
+    <dimen name="iv_member">80dp</dimen>
 </resources>

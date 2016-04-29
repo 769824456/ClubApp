@@ -1,7 +1,7 @@
 package win.yulongsun.clubapp.biz.impl;
 
 
-import win.yulongsun.clubapp.bean.User;
+import win.yulongsun.clubapp.entity.UserVo;
 import win.yulongsun.clubapp.biz.inter.IUserBiz;
 import win.yulongsun.clubapp.biz.inter.OnLoginListener;
 
@@ -29,10 +29,10 @@ public class UserBiz implements IUserBiz {
                 }
                 //模拟登陆成功
                 if ("syl".equals(username) && "123".equals(password)) {
-                    User user = new User();
-                    user.setUsername(username);
-                    user.setPassword(password);
-                    loginListener.LoginSuccess(user);
+                    UserVo mUserVo = new UserVo();
+                    mUserVo.setUsername(username);
+                    mUserVo.setPassword(password);
+                    loginListener.LoginSuccess(mUserVo);
                 } else {
                     loginListener.LoginFailed();
                 }

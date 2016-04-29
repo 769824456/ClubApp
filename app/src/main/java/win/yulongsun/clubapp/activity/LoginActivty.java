@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.common.BaseToolbarActivity;
 
 /**
  * PROJECT_NAME : ClubApp
@@ -49,14 +50,13 @@ public class LoginActivty extends BaseToolbarActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.btn_login:
                 mIntent = new Intent(this, HomeActivity.class);
+                startActivity(mIntent);
+                finish();
                 break;
             case R.id.tv_login_reg:
                 mIntent = new Intent(this, RegActivity.class);
+                startActivity(mIntent);
                 break;
-        }
-        if (mIntent != null) {
-            startActivity(mIntent);
-            finish();
         }
     }
 }

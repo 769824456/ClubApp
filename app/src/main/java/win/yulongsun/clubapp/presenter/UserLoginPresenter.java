@@ -2,7 +2,7 @@ package win.yulongsun.clubapp.presenter;
 
 import android.os.Handler;
 
-import win.yulongsun.clubapp.bean.User;
+import win.yulongsun.clubapp.entity.UserVo;
 import win.yulongsun.clubapp.biz.inter.IUserBiz;
 import win.yulongsun.clubapp.biz.inter.OnLoginListener;
 import win.yulongsun.clubapp.biz.impl.UserBiz;
@@ -33,12 +33,12 @@ public class UserLoginPresenter {
 
         userBiz.login(userLoginView.getUserName(), userLoginView.getPassword(), new OnLoginListener() {
             @Override
-            public void LoginSuccess(final User user) {
+            public void LoginSuccess(final UserVo mUserVo) {
                 //需要在UI线程执行
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        userLoginView.toMainActivity(user);
+                        userLoginView.toMainActivity(mUserVo);
                         userLoginView.hideLoading();
                     }
                 });

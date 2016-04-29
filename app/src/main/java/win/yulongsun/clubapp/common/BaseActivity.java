@@ -1,4 +1,4 @@
-package win.yulongsun.clubapp.activity;
+package win.yulongsun.clubapp.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -59,5 +59,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     /*隐藏对话框*/
     public void hideLoading() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override protected void onDestroy() {
+        super.onDestroy();
     }
 }
