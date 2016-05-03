@@ -1,0 +1,2 @@
+- 规模：scale
+- 手机：phone

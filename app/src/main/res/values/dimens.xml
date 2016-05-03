@@ -10,4 +10,7 @@
     <dimen name="ic_login">25dp</dimen>
     <dimen name="toolbar_text">18sp</dimen>
     <dimen name="iv_member">80dp</dimen>
+    <dimen name="mine_info_text_value">14sp</dimen>
+    <dimen name="mine_info_text_name">16sp</dimen>
+    <dimen name="mine_info_edit_icon_size">20dp</dimen>
 </resources>

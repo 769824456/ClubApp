@@ -3,35 +3,35 @@
           package="win.yulongsun.clubapp">
 
     <application
+        android:name=".common.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
-        </activity>
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".ui.activity.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".activity.SplashActivity">
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivty">
+        <activity android:name=".ui.activity.LoginActivity">
         </activity>
-        <activity android:name=".activity.RegActivity"/>
-        <activity android:name=".activity.member.MemberActivity">
+        <activity android:name=".ui.activity.RegActivity"/>
+        <activity android:name=".ui.activity.member.MemberActivity">
         </activity>
-        <activity android:name=".activity.member.MemberAddActivity"/>
-        <activity android:name=".activity.statistics.StatisticsActivity"/>
-        <activity android:name=".activity.daily.DailyActivity"/>
-        <activity android:name=".activity.mUserVo.UserActivity"/>
-        <activity android:name=".activity.mUserVo.UserAddActivity"/>
+        <activity android:name=".ui.activity.member.MemberAddActivity"/>
+        <activity android:name=".ui.activity.statistics.StatisticsActivity"/>
+        <activity android:name=".ui.activity.daily.DailyActivity"/>
+        <activity android:name=".ui.activity.user.UserActivity"/>
+        <activity android:name=".ui.activity.user.UserAddActivity"/>
+        <activity android:name=".ui.activity.mine.MineActivity"/>
     </application>
 
 </manifest>

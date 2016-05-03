@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="win.yulongsun.clubapp.activity.member.MemberActivity">
+    tools:context=".ui.activity.member.MemberActivity">
 
     <include
         android:id="@+id/tl_member"

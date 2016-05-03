@@ -50,7 +50,7 @@
                     android:layout_width="@dimen/ic_reg"
                     android:layout_height="@dimen/ic_reg"
                     android:layout_margin="16dp"
-                    android:src="@mipmap/ic_reg_club"/>
+                    android:src="@mipmap/ic_reg_addr"/>
 
                 <EditText
                     android:id="@+id/et_reg_club_addr"
@@ -70,9 +70,10 @@
                     android:layout_width="@dimen/ic_reg"
                     android:layout_height="@dimen/ic_reg"
                     android:layout_margin="16dp"
-                    android:src="@mipmap/ic_reg_club"/>
+                    android:src="@mipmap/ic_reg_manager"/>
 
                 <EditText
+                    android:id="@+id/et_reg_club_manager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="店面经理"
@@ -89,9 +90,10 @@
                     android:layout_width="@dimen/ic_reg"
                     android:layout_height="@dimen/ic_reg"
                     android:layout_margin="16dp"
-                    android:src="@mipmap/ic_reg_club"/>
+                    android:src="@mipmap/ic_reg_scale"/>
 
                 <Spinner
+                    android:id="@+id/sp_reg_club_scale"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/scale"
@@ -109,12 +111,34 @@
                     android:layout_width="@dimen/ic_reg"
                     android:layout_height="@dimen/ic_reg"
                     android:layout_margin="16dp"
-                    android:src="@mipmap/ic_reg_club"/>
+                    android:src="@mipmap/ic_reg_phone"/>
 
                 <EditText
+                    android:id="@+id/et_reg_club_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="手机号"
+                    android:inputType="phone"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/ic_reg"
+                    android:layout_height="@dimen/ic_reg"
+                    android:layout_margin="16dp"
+                    android:src="@mipmap/ic_login_pwd"/>
+
+                <EditText
+                    android:id="@+id/et_reg_club_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="密码"
                     android:inputType="phone"
                     android:textSize="14sp"/>
             </LinearLayout>
@@ -125,6 +149,7 @@
                 android:layout_gravity="bottom"
                 android:layout_margin="16dp"
                 android:background="@color/colorPrimary"
+                android:onClick="btnReg"
                 android:text="提交"
                 />
         </LinearLayout>
