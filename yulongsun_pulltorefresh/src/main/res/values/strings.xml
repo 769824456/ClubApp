@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">YulongsunPulltorefresh</string>
+    <!-- the String about pull-down and pull-up  -->
+    <string name="loading">loading...</string>
+    <string name="pushmsg_center_no_more_msg">no more data!</string>
+    <string name="pushmsg_center_pull_up_text">release to load more</string>
+    <string name="pushmsg_center_pull_down_text">pull down to refresh</string>
+    <string name="pushmsg_center_pull_release_text">release to get more</string>
+    <string name="pushmsg_center_pull_down_update_time">last update time: </string>
+    <string name="pushmsg_center_load_more_ongoing_text">loading</string>
+    <string name="xsearch_loading">loading...</string>
+    <string name="pull_to_refresh_header_hint_normal">@string/pushmsg_center_pull_down_text</string>
+    <string name="pull_to_refresh_header_hint_normal2">pull up to refresh</string>
+    <string name="pull_to_refresh_header_hint_ready">release to refresh</string>
+    <string name="pull_to_refresh_header_hint_loading">@string/pushmsg_center_load_more_ongoing_text</string>
+    <string name="pull_to_refresh_header_last_time">@string/pushmsg_center_pull_down_update_time</string>
+    <string name="pull_to_refresh_footer_hint_ready">release to load more</string>
+    <string name="pull_to_refresh_refreshing_label">@string/pull_to_refresh_header_hint_loading</string>
+    <string name="pull_to_refresh_no_more_data">no more data</string>
+    <string name="pull_to_refresh_no_data">no data </string>
+    <string name="pull_to_refresh_network_error">Network is available!</string>
+    <string name="picture_load_image_failed">click the screen to reload</string>
+    <string name="picture_image_loading">loading…</string>
+    <string name="pull_to_refresh_pull_label">pull down to refresh</string>
+    <string name="pull_to_refresh_release_label">release to load more</string>
+    <string name="pull_to_refresh_refreshing_label2">refreshing\u2026</string>
+    <string name="pull_to_refresh_footer_release_label">release to load more</string>
+    <string name="pull_to_refresh_footer_pull_label">pull up to load more</string>
+    <string name="pull_to_refresh_footer_refreshing_label">refreshing\u2026</string>
+
+</resources>
