@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import butterknife.Bind;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
 
@@ -14,19 +15,14 @@ import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
  * NOTE :店员
  */
 public class UserActivity extends BaseToolbarActivity {
-    private Toolbar tl_user;
+    @Bind(R.id.tl_user) Toolbar mTlUser;
 
     @Override protected String getToolbarTitle() {
         return "店员";
     }
 
     @Override protected Toolbar getToolbarLayout() {
-        return tl_user;
-    }
-
-    @Override protected void initViews() {
-        super.initViews();
-        tl_user = (Toolbar) findViewById(R.id.tl_user);
+        return mTlUser;
     }
 
     @Override public int getLayoutResId() {
@@ -38,11 +34,11 @@ public class UserActivity extends BaseToolbarActivity {
     }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
-        int    id      = item.getItemId();
-        Intent mIntent = null;
+        int    id     = item.getItemId();
+        Intent intent = null;
         if (id == R.id.action_add) {
-            mIntent = new Intent(UserActivity.this, UserAddActivity.class);
-            startActivity(mIntent);
+            intent = new Intent(UserActivity.this, UserAddActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
