@@ -31,6 +31,6 @@ dependencies {
     compile files('libs/mpandroidchartlibrary-2-2-4.jar')
     /*头像*/
     compile 'de.hdodenhof:circleimageview:2.0.0'
-
     compile project(':yulongsun_utils')
+    compile project(':yulongsun_pulltorefresh')
 }

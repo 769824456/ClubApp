@@ -8,14 +8,18 @@
         android:id="@+id/tl_user"
         layout="@layout/layout_toolbar"/>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srf_user"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcv_user"
+    <!--    <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srf_user"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>-->
+    <win.yulongsun.yulongsunpulltorefresh.PullToRefreshListView
+        android:id="@+id/plv_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

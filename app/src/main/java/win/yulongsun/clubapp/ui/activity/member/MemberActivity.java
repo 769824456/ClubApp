@@ -9,33 +9,30 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.entity.MemberVo;
 import win.yulongsun.clubapp.ui.adapter.MemberRVAdapter;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
-import win.yulongsun.clubapp.entity.MemberVo;
 
 //会员
 public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    private Toolbar             tl_member;
-    private RecyclerView        rv_member;
-    private SwipeRefreshLayout  srf_member;
-    private ArrayList<MemberVo> mMemberVos;
-    private MemberRVAdapter     mMemberRVAdapter;
+    @Bind(R.id.rv_member)  RecyclerView        mRvMember;
+    @Bind(R.id.srf_member) SwipeRefreshLayout  mSrfMember;
+    @Bind(R.id.tl_member)  Toolbar             mTlMember;
+    private                ArrayList<MemberVo> mMemberVos;
+    private                MemberRVAdapter     mMemberRVAdapter;
 
     @Override public int getLayoutResId() {
         return R.layout.activity_member;
     }
 
-    @Override protected void initViews() {
-        super.initViews();
-        tl_member = (Toolbar) findViewById(R.id.tl_member);
-        srf_member = (SwipeRefreshLayout) findViewById(R.id.srf_member);
-        rv_member = (RecyclerView) findViewById(R.id.rv_member);
-        srf_member.setOnRefreshListener(this);
+    @Override protected void initListeners() {
+        super.initListeners();
+        mSrfMember.setOnRefreshListener(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        rv_member.setLayoutManager(layoutManager);
-
+        mRvMember.setLayoutManager(layoutManager);
     }
 
     @Override protected String getToolbarTitle() {
@@ -43,7 +40,7 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
     }
 
     @Override protected Toolbar getToolbarLayout() {
-        return tl_member;
+        return mTlMember;
     }
 
 
@@ -71,10 +68,11 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
             mMemberVos.add(mMemberVo);
         }
         mMemberRVAdapter = new MemberRVAdapter(this, mMemberVos);
-        rv_member.setAdapter(mMemberRVAdapter);
+        mRvMember.setAdapter(mMemberRVAdapter);
     }
 
     @Override public void onRefresh() {
 
     }
+
 }
