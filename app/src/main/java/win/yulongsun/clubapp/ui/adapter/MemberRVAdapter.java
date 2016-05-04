@@ -32,7 +32,7 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberRVAdapter.ViewHo
     }
 
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View       mView       = mLayoutInflater.inflate(R.layout.item_list_member, null);
+        View       mView       = mLayoutInflater.inflate(R.layout.item_rv_member, null);
         ViewHolder mViewHolder = new ViewHolder(mView);
         return mViewHolder;
     }

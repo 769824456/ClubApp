@@ -27,12 +27,21 @@
         <activity android:name=".ui.activity.member.MemberActivity">
         </activity>
         <activity android:name=".ui.activity.member.MemberAddActivity"/>
-        <activity android:name=".ui.activity.statistics.StatisticsActivity"/>
+        <activity android:name=".ui.activity.statistics.StatisticsActivity">
+        </activity>
         <activity android:name=".ui.activity.daily.DailyActivity"/>
         <activity android:name=".ui.activity.user.UserActivity"/>
         <activity android:name=".ui.activity.user.UserAddActivity"/>
         <activity android:name=".ui.activity.mine.MineActivity"/>
         <activity android:name=".ui.activity.user.UserUpdateActivity"/>
+        <activity android:name=".ui.activity.member.MemberSearchActivity">
+        </activity>
+        <activity android:name=".ui.activity.member.MemberHistoryActivity">
+        </activity>
+        <activity android:name=".ui.activity.member.MemberConsumeActivity">
+        </activity>
+        <activity android:name=".ui.activity.member.MemberRechargeActivity">
+        </activity>
     </application>
 
 </manifest>

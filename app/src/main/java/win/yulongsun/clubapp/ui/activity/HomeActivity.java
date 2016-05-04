@@ -1,31 +1,40 @@
 package win.yulongsun.clubapp.ui.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SimpleAdapter;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.entity.HomeRV;
 import win.yulongsun.clubapp.ui.activity.daily.DailyActivity;
 import win.yulongsun.clubapp.ui.activity.member.MemberActivity;
 import win.yulongsun.clubapp.ui.activity.mine.MineActivity;
 import win.yulongsun.clubapp.ui.activity.statistics.StatisticsActivity;
 import win.yulongsun.clubapp.ui.activity.user.UserActivity;
+import win.yulongsun.clubapp.ui.adapter.HomeRVAdapter;
 import win.yulongsun.clubapp.utils.LocalImageHolderView;
+import win.yulongsun.yulongsunutils.DividerItemDecoration;
 import win.yulongsun.yulongsunutils.common.BaseActivity;
 
 /**
@@ -39,6 +48,7 @@ public class HomeActivity extends BaseActivity
     @Bind(R.id.cb_home)     ConvenientBanner mCbHome;
     @Bind(R.id.nav_view)    NavigationView   mNavView;
     @Bind(R.id.drawer_home) DrawerLayout     mDrawerHome;
+    @Bind(R.id.rv_home)     RecyclerView     mRvHome;
     LinearLayout mLlNavHeader;
     ImageView    mIvNavHeaderAvatar;
     ImageView    mIvNavHeaderLogout;
@@ -88,6 +98,34 @@ public class HomeActivity extends BaseActivity
         }, mLocalImages)
                 .setPageIndicator(new int[]{R.mipmap.ic_page_indicator, R.mipmap.ic_page_indicator_focused})
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL);
+        //girdview
+        ArrayList<HomeRV> mDatas  = new ArrayList<>();
+        HomeRV            homeRV1 = new HomeRV();
+        homeRV1.rl_item_home = R.color.colorAccent;
+        homeRV1.iv_item_home = R.mipmap.ic_home_searcher;
+        homeRV1.tv_item_home = "搜索";
+        HomeRV homeRV2 = new HomeRV();
+        homeRV2.rl_item_home = R.color.mediumturquoise;
+        homeRV2.iv_item_home = R.mipmap.ic_home_consume;
+        homeRV2.tv_item_home = "消费";
+        HomeRV homeRV3 = new HomeRV();
+        homeRV3.rl_item_home = R.color.lightsteelblue;
+        homeRV3.iv_item_home = R.mipmap.ic_home_recharge;
+        homeRV3.tv_item_home = "充值";
+        HomeRV homeRV4 = new HomeRV();
+        homeRV4.rl_item_home = R.color.darkorange;
+        homeRV4.iv_item_home = R.mipmap.ic_home_history;
+        homeRV4.tv_item_home = "历史";
+
+
+        mDatas.add(homeRV1);
+        mDatas.add(homeRV2);
+        mDatas.add(homeRV3);
+        mDatas.add(homeRV4);
+        mRvHome.setLayoutManager(new GridLayoutManager(this, 2));
+        mRvHome.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        HomeRVAdapter homeRVAdapter = new HomeRVAdapter(this, mDatas);
+        mRvHome.setAdapter(homeRVAdapter);
     }
 
     @Override
@@ -99,21 +137,21 @@ public class HomeActivity extends BaseActivity
             super.onBackPressed();
         }
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.home, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -169,4 +207,5 @@ public class HomeActivity extends BaseActivity
             startActivity(intent);
         }
     }
+
 }

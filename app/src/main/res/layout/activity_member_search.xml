@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="win.yulongsun.clubapp.ui.activity.member.MemberSearchActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tl_member_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/secondary_text"
+        >
+
+        <EditText
+            android:id="@+id/et_search_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_bg_toolbar_search"
+            android:gravity="center_vertical"
+            android:hint="请输入会员名"
+            android:imeActionId="@+id/ime_search_go"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp"
+            android:singleLine="true"
+            android:textSize="14sp"/>
+    </android.support.v7.widget.Toolbar>
+
+</LinearLayout>
