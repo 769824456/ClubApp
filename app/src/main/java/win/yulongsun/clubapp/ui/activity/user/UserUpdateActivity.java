@@ -24,39 +24,38 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.yulongsunutils.LogUtils;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
-//添加店员
-public class UserAddActivity extends BaseToolbarActivity {
+//修改店员信息
+public class UserUpdateActivity extends BaseToolbarActivity {
 
     private static final int TAKE_PHOTO_REQUEST  = 1;
     private static final int PHOTO_ALBUM_REQUEST = 0;
-    @Bind(R.id.tl_user_add)        Toolbar           mTlUserAdd;
-    @Bind(R.id.civ_user_add)       CircleImageView   mCivUserAdd;
-    @Bind(R.id.et_user_add_phone)  EditText          mEtUserAddPhone;
-    @Bind(R.id.et_user_add_pwd)    EditText          mEtUserAddPwd;
-    @Bind(R.id.et_user_add_job_id) EditText          mEtUserAddJobId;
-    @Bind(R.id.et_user_add_name)   EditText          mEtUserAddName;
-    @Bind(R.id.et_user_add_addr)   EditText          mEtUserAddAddr;
-    @Bind(R.id.rb_user_add_boy)    RadioButton       mRbUserAddBoy;
-    @Bind(R.id.rb_user_add_girl)   RadioButton       mRbUserAddGirl;
-    @Bind(R.id.rg_user_add_gender) RadioGroup        mRgUserAddGender;
-    private                        ImageFileSelector mImageFileSelector;
-    private String TAG = UserAddActivity.class.getSimpleName();
+    @Bind(R.id.tl_user_update)        Toolbar           mTlUserUpdate;
+    @Bind(R.id.civ_user_update)       CircleImageView   mCivUserUpdate;
+    @Bind(R.id.et_user_update_phone)  EditText          mEtUserUpdatePhone;
+    @Bind(R.id.et_user_update_pwd)    EditText          mEtUserUpdatePwd;
+    @Bind(R.id.et_user_update_job_id) EditText          mEtUserUpdateJobId;
+    @Bind(R.id.et_user_update_name)   EditText          mEtUserUpdateName;
+    @Bind(R.id.rb_user_update_boy)    RadioButton       mRbUserUpdateBoy;
+    @Bind(R.id.rb_user_update_girl)   RadioButton       mRbUserUpdateGirl;
+    @Bind(R.id.rg_user_update_gender) RadioGroup        mRgUserUpdateGender;
+    @Bind(R.id.et_user_update_addr)   EditText          mEtUserUpdateAddr;
+    private                           ImageFileSelector mImageFileSelector;
+    private String TAG = UserUpdateActivity.class.getSimpleName();
 
     @Override public int getLayoutResId() {
-        return R.layout.activity_user_add;
+        return R.layout.activity_user_update;
     }
 
 
     @Override protected String getToolbarTitle() {
-        return "添加会员";
+        return "修改会员";
     }
 
     @Override protected Toolbar getToolbarLayout() {
-        return mTlUserAdd;
+        return mTlUserUpdate;
     }
 
     @Override protected int getMenuResId() {
@@ -74,9 +73,9 @@ public class UserAddActivity extends BaseToolbarActivity {
     @Override protected void initListeners() {
         super.initListeners();
         //gender
-        mRgUserAddGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        mRgUserUpdateGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == mRbUserAddBoy.getId()) {
+                if (checkedId == mRgUserUpdateGender.getId()) {
                     Log.d(TAG, "onCheckedChanged: boy");
                 } else {
                     Log.d(TAG, "onCheckedChanged: girl");
@@ -90,35 +89,35 @@ public class UserAddActivity extends BaseToolbarActivity {
             @Override
             public void onSuccess(final String file) { // 选取图片成功
                 Bitmap bitmap = BitmapFactory.decodeFile(file);
-                mCivUserAdd.setImageBitmap(bitmap);
+                mCivUserUpdate.setImageBitmap(bitmap);
             }
 
             @Override
             public void onError() { // 选取图片失败
-                ToastUtils.showMessage(UserAddActivity.this, "选取图片失败");
+                ToastUtils.showMessage(UserUpdateActivity.this, "选取图片失败");
             }
         });
     }
 
 
-    @OnClick(R.id.civ_user_add) void btnChooseImage() {
+    @OnClick(R.id.civ_user_update) void btnChooseImage() {
         new AlertDialog.Builder(this).setTitle("选择图片").setItems(new String[]{"相册", "拍照"}, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case TAKE_PHOTO_REQUEST://拍照
                         // 拍照选取
-                        if (ContextCompat.checkSelfPermission(UserAddActivity.this, Manifest.permission.CAMERA)
+                        if (ContextCompat.checkSelfPermission(UserUpdateActivity.this, Manifest.permission.CAMERA)
                                 != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(UserAddActivity.this, new String[]{Manifest.permission.CAMERA},
+                            ActivityCompat.requestPermissions(UserUpdateActivity.this, new String[]{Manifest.permission.CAMERA},
                                     9);
                         } else {
-                            mImageFileSelector.takePhoto(UserAddActivity.this);
+                            mImageFileSelector.takePhoto(UserUpdateActivity.this);
                         }
                         break;
                     case PHOTO_ALBUM_REQUEST://相册
                         // 从文件选取
-                        mImageFileSelector.selectImage(UserAddActivity.this);
+                        mImageFileSelector.selectImage(UserUpdateActivity.this);
                         break;
                 }
             }

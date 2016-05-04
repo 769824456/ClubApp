@@ -33,4 +33,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile project(':yulongsun_utils')
     compile project(':yulongsun_pulltorefresh')
+    compile 'com.sw926.imagefileselector:library:1.0.3-snapshot'
 }

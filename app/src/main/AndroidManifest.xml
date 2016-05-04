@@ -32,6 +32,7 @@
         <activity android:name=".ui.activity.user.UserActivity"/>
         <activity android:name=".ui.activity.user.UserAddActivity"/>
         <activity android:name=".ui.activity.mine.MineActivity"/>
+        <activity android:name=".ui.activity.user.UserUpdateActivity"/>
     </application>
 
 </manifest>
