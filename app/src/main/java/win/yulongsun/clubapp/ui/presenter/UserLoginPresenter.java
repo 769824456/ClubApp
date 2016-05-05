@@ -42,4 +42,8 @@ public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
     public void register() {
         iView.toRegView();
     }
+
+    public void forgetPwd() {
+        iView.toForgetPwdView();
+    }
 }

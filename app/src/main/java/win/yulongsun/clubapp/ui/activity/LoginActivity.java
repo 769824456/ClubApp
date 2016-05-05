@@ -58,6 +58,9 @@ public class LoginActivity extends BaseToolbarActivity implements IUserLoginView
     @OnClick(R.id.tv_login_reg) void doReg() {
         userLoginPresenter.register();
     }
+    @OnClick(R.id.tv_login_forget_pwd) void doForgetPwd() {
+        userLoginPresenter.forgetPwd();
+    }
 
 
     @Override public String getPhone() {
@@ -81,6 +84,11 @@ public class LoginActivity extends BaseToolbarActivity implements IUserLoginView
 
     @Override public void toRegView() {
         mIntent = new Intent(this, RegActivity.class);
+        startActivity(mIntent);
+    }
+
+    @Override public void toForgetPwdView() {
+        mIntent = new Intent(this, ForgetPwdActivity.class);
         startActivity(mIntent);
     }
 }

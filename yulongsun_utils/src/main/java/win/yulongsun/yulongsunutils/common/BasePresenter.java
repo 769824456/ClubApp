@@ -21,4 +21,7 @@ public abstract class BasePresenter<T extends IBaseView> {
         this.context = context;
         this.iView = iView;
     }
+
+
+
 }

@@ -24,4 +24,6 @@ public interface IUserLoginView extends IBaseView {
 
     void toRegView();
 
+    void toForgetPwdView();
+
 }

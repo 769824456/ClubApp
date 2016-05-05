@@ -1,11 +1,13 @@
 package win.yulongsun.clubapp.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -198,6 +200,15 @@ public class HomeActivity extends BaseActivity
         Intent intent = null;
         switch (v.getId()) {
             case R.id.iv_nav_header_logout:
+                new AlertDialog.Builder(HomeActivity.this).setMessage("你确定要退出应用吗？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                                HomeActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
                 break;
             case R.id.ll_nav_header:
                 intent = new Intent(HomeActivity.this, MineActivity.class);
