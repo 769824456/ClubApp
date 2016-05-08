@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -37,7 +38,10 @@ import win.yulongsun.clubapp.ui.activity.user.UserActivity;
 import win.yulongsun.clubapp.ui.adapter.HomeRVAdapter;
 import win.yulongsun.clubapp.utils.LocalImageHolderView;
 import win.yulongsun.yulongsunutils.DividerItemDecoration;
+import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseActivity;
+import win.yulongsun.yulongsunutils.image.ImageLoadManager;
+import win.yulongsun.yulongsunutils.utils.ResUtils;
 
 /**
  * 主页
@@ -54,8 +58,9 @@ public class HomeActivity extends BaseActivity
     LinearLayout mLlNavHeader;
     ImageView    mIvNavHeaderAvatar;
     ImageView    mIvNavHeaderLogout;
-
+    TextView     mTvNavHeaderName;
     private ArrayList<Integer> mLocalImages;
+    private MenuItem           mMenuItemNavUser;
 
     @Override public int getLayoutResId() {
         return R.layout.activity_home;
@@ -71,8 +76,10 @@ public class HomeActivity extends BaseActivity
         toggle.syncState();
         //findViews
         View headerView = mNavView.getHeaderView(0);
+        mMenuItemNavUser = mNavView.getMenu().findItem(R.id.nav_user);
         mLlNavHeader = (LinearLayout) headerView.findViewById(R.id.ll_nav_header);
         mIvNavHeaderAvatar = (ImageView) headerView.findViewById(R.id.iv_nav_header_avatar);
+        mTvNavHeaderName = (TextView) headerView.findViewById(R.id.tv_nav_header_name);
         mIvNavHeaderLogout = (ImageView) headerView.findViewById(R.id.iv_nav_header_logout);
     }
 
@@ -90,7 +97,7 @@ public class HomeActivity extends BaseActivity
         //本地图片集合
         mLocalImages = new ArrayList<>();
         for (int position = 1; position < 5; position++)
-            mLocalImages.add(getResId("bg_home_" + position, R.mipmap.class));
+            mLocalImages.add(ResUtils.getResId("bg_home_" + position, R.mipmap.class));
 
         mCbHome.setPages(new CBViewHolderCreator<LocalImageHolderView>() {
             @Override
@@ -128,6 +135,15 @@ public class HomeActivity extends BaseActivity
         mRvHome.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         HomeRVAdapter homeRVAdapter = new HomeRVAdapter(this, mDatas);
         mRvHome.setAdapter(homeRVAdapter);
+
+        //left menu
+        String user_name   = ACache.get(HomeActivity.this).getAsString("user_name");
+        String user_avatar = ACache.get(HomeActivity.this).getAsString("user_avatar");
+        String user_r_id   = ACache.get(HomeActivity.this).getAsString("user_r_id");
+
+        ImageLoadManager.getInstance().with(HomeActivity.this).load(user_avatar).setError(R.mipmap.ic_launcher).into(mIvNavHeaderAvatar);
+        mTvNavHeaderName.setText(user_name);
+        mMenuItemNavUser.setVisible("1".equals(user_r_id) ? true : false);
     }
 
     @Override
@@ -180,22 +196,6 @@ public class HomeActivity extends BaseActivity
     }
 
 
-    /**
-     * 通过文件名获取资源id 例子：getResId("icon", R.drawable.class);
-     * @param variableName
-     * @param c
-     * @return
-     */
-    public static int getResId(String variableName, Class<?> c) {
-        try {
-            Field idField = c.getDeclaredField(variableName);
-            return idField.getInt(idField);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
-
     @Override public void onClick(View v) {
         Intent intent = null;
         switch (v.getId()) {
@@ -205,6 +205,7 @@ public class HomeActivity extends BaseActivity
                             @Override public void onClick(DialogInterface dialog, int which) {
                                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                                 HomeActivity.this.finish();
+                                ACache.get(HomeActivity.this).put("is_login", "0");
                             }
                         })
                         .setNegativeButton("取消", null)

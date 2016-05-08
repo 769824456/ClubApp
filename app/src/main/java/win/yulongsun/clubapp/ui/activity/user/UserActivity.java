@@ -1,7 +1,6 @@
 package win.yulongsun.clubapp.ui.activity.user;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.entity.UserVo;
 import win.yulongsun.clubapp.ui.adapter.UserRVAdapter;
@@ -97,7 +95,7 @@ public class UserActivity extends BaseToolbarActivity implements SwipeRefreshLay
             UserVo userVo = new UserVo();
             userVo.id = i;
             userVo.name = "员工" + i;
-            userVo.phone = "13067509781" + i;
+            userVo.mobile = "13067509781" + i;
             userVo.create_time = "2016-1-1";
             userVo.gender = 1;
             userVo.job_id = 10000 + i;

@@ -14,13 +14,13 @@ import win.yulongsun.yulongsunutils.common.IBaseView;
  * NOTE : 视图层：登陆界面接口
  */
 public interface IUserLoginView extends IBaseView {
-    String getPhone();
+    String getMobile();
 
     String getPwd();
 
     void toMainView();
 
-    void showFailedError();
+    void showFailedError(String msg);
 
     void toRegView();
 

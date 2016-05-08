@@ -47,7 +47,7 @@ public class UserRVAdapter extends RecyclerView.Adapter<UserRVAdapter.ViewHolder
     @Override public void onBindViewHolder(ViewHolder holder, final int position) {
         UserVo userVo = mList.get(position);
         holder.mTvItemUserJobIdAndName.setText(userVo.job_id + "--" + userVo.name);
-        holder.mTvItemUserPhone.setText(userVo.phone);
+        holder.mTvItemUserPhone.setText(userVo.mobile);
         holder.mBtnItemUserCall.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 ToastUtils.showMessage(mContext, String.valueOf(position));

@@ -7,7 +7,7 @@ package win.yulongsun.yulongsunutils.common;
  * NOTE :
  */
 public interface IBaseView {
-    void showLoading();
+    void showLoading(String msg);
 
     void hideLoading();
 

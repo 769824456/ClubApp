@@ -1,10 +1,12 @@
 package win.yulongsun.yulongsunutils.common;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import win.yulongsun.yulongsunutils.R;
 
@@ -15,7 +17,9 @@ import win.yulongsun.yulongsunutils.R;
  * USER : yulongsun on 2016/4/13
  * NOTE :
  */
-public abstract class BaseToolbarActivity extends BaseActivity {
+public abstract class BaseToolbarActivity extends BaseActivity implements IBaseView {
+
+    private ProgressDialog mProgDialog;
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,25 @@ public abstract class BaseToolbarActivity extends BaseActivity {
             getMenuInflater().inflate(menuResId, menu);
         }
         return true;
+    }
+
+    @Override public void showLoading(String msg) {
+        super.showLoading();
+        if (mProgDialog == null)
+            mProgDialog = new ProgressDialog(this);
+        mProgDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgDialog.setIndeterminate(false);
+        mProgDialog.setCancelable(false);
+        mProgDialog.setMessage(msg);
+        mProgDialog.show();
+    }
+
+    @Override public void hideLoading() {
+        super.hideLoading();
+        if (mProgDialog != null) {
+            mProgDialog.hide();
+//            mProgDialog.dismiss();
+        }
     }
 
     protected abstract int getMenuResId();

@@ -3,12 +3,15 @@ package win.yulongsun.clubapp.entity;
 
 public class UserVo {
 
-    public long   id;
+    public int    id;
+    public String avatar;
     public String name;
-    public String phone;
+    public String mobile;
     public String addr;
-    public long   job_id;
+    public int    job_id;
     public int    gender;
     public int    is_enable;
     public String create_time;
+    public int    c_id;
+    public int    r_id;
 }

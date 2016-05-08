@@ -18,8 +18,11 @@ public interface IUserRegView extends IBaseView {
 
     String getClubScale();
 
-    String getManagerPhone();
+    String getManagerMobile();
 
     String getClubPwd();
 
+    void toLoginView();
+
+    void showRegFailure(String msg);
 }

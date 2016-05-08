@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import win.yulongsun.clubapp.R;
+import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -40,8 +41,14 @@ public class SplashActivity extends BaseActivity {
         super.initListeners();
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
-
-                Intent mIntent = new Intent(SplashActivity.this, LoginActivity.class);
+                String is_login    = ACache.get(SplashActivity.this).getAsString("is_login");
+                Class  targetClass = null;
+                if ("1".equals(is_login)) {
+                    targetClass = LoginActivity.class;
+                } else {
+                    targetClass = HomeActivity.class;
+                }
+                Intent mIntent = new Intent(SplashActivity.this, targetClass);
                 startActivity(mIntent);
                 finish();
 

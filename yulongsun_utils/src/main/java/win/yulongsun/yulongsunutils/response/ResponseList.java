@@ -7,9 +7,4 @@ public class ResponseList<T> extends BaseResponse {
 
     public List<T> result = new ArrayList<T>();
 
-    @Override public String toString() {
-        return "ResponseList{" +
-                "result=" + result +
-                '}';
-    }
 }

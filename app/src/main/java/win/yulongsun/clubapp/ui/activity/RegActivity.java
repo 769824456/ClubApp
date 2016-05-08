@@ -11,6 +11,7 @@ import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.ui.presenter.UserRegPresenter;
 import win.yulongsun.clubapp.ui.view.IUserRegView;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
+import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
 /**
  * PROJECT_NAME : ClubApp
@@ -65,6 +66,7 @@ public class RegActivity extends BaseToolbarActivity implements IUserRegView {
         });
     }
 
+
     @Override public String getClubName() {
         return mEtRegClubName.getText().toString();
     }
@@ -82,12 +84,20 @@ public class RegActivity extends BaseToolbarActivity implements IUserRegView {
         return String.valueOf(mSpRegClubScalePosi);
     }
 
-    @Override public String getManagerPhone() {
+    @Override public String getManagerMobile() {
         return mEtRegClubPhone.getText().toString();
     }
 
     @Override public String getClubPwd() {
         return mEtRegClubPwd.getText().toString();
+    }
+
+    @Override public void toLoginView() {
+        this.finish();
+    }
+
+    @Override public void showRegFailure(String msg) {
+        ToastUtils.showMessage(RegActivity.this, msg);
     }
 
     public void btnReg(View view) {

@@ -12,7 +12,8 @@ import java.security.Timestamp;
  * @Description
  */
 public class BaseResponse {
-    public String errorMsg;
-    public int    errorCode;
+    public boolean error;
+    public String  errorMsg;
+    public int     errorCode;
 
 }

@@ -9,7 +9,7 @@ package win.yulongsun.yulongsunutils.response;
  * @Version 1.0.0
  * @Description
  */
-public class ResponseObject<T> {
+public class ResponseObject<T> extends BaseResponse{
     public T result;
 
 

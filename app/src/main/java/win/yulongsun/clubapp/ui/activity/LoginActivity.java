@@ -12,6 +12,7 @@ import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.ui.presenter.UserLoginPresenter;
 import win.yulongsun.clubapp.ui.view.IUserLoginView;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
+import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
 /**
  * PROJECT_NAME : ClubApp
@@ -63,7 +64,7 @@ public class LoginActivity extends BaseToolbarActivity implements IUserLoginView
     }
 
 
-    @Override public String getPhone() {
+    @Override public String getMobile() {
         return mEtLoginPhone.getText().toString();
     }
 
@@ -78,8 +79,8 @@ public class LoginActivity extends BaseToolbarActivity implements IUserLoginView
     }
 
 
-    @Override public void showFailedError() {
-
+    @Override public void showFailedError(String msg) {
+        ToastUtils.showMessage(LoginActivity.this,msg);
     }
 
     @Override public void toRegView() {
