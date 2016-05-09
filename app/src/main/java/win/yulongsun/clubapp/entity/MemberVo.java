@@ -9,15 +9,19 @@ import java.sql.Timestamp;
  * NOTE :
  */
 public class MemberVo {
-    public int       id;
-    public String    name;
-    public String    mobile;
-    public int       rank;
-    public int       card_id;
-    public int       gender;
-    public String    varchar;
-    public int       is_enable;
-    public Timestamp create_time;
+    public int    id;
+    public String avatar;
+    public String name;
+    public String mobile;
+    public String addr;
+    public int    score;
+    public int    rank;
+    public int    card_id;
+    public int    gender;
+    public int    c_id;
+    public int    operator_id;
+    public int    is_enable;
+    public String create_time;
 
     public MemberVo() {
     }

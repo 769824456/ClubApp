@@ -15,184 +15,194 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                app:civ_border_color="@color/divider"
-                app:civ_border_width="1dp"/>
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_login_pwd"/>
-
-                <EditText
-                    android:id="@+id/et_member_name"
-                    style="@style/MemberAddPageEditText"
-                    android:hint="姓名"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_login_pwd"/>
-
-                <EditText
-                    android:id="@+id/et_member_mobile"
-                    style="@style/MemberAddPageEditText"
-                    android:hint="手机号"
-                    android:inputType="phone"
-                    android:maxLength="11"/>
-
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_member_add_avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher"
+                    app:civ_border_color="@color/divider"
+                    app:civ_border_width="1dp"/>
 
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_login_pwd"/>
-
-                <EditText
-                    android:id="@+id/et_member_score"
-                    style="@style/MemberAddPageEditText"
-                    android:hint="积分"
-                    android:inputType="number"
-                    android:maxLength="5"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_login_pwd"/>
-
-                <Spinner
-                    android:id="@+id/sp_member_name"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/rank"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_login_account"/>
-
-                <EditText
-                    android:id="@+id/et_member_card_id"
-                    style="@style/MemberAddPageEditText"
-                    android:hint="消费卡编号"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_member_gender"/>
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <RadioButton
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_login_pwd"/>
+
+                    <EditText
+                        android:id="@+id/et_member_add_name"
+                        style="@style/MemberAddPageEditText"
+                        android:hint="姓名"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_login_pwd"/>
+
+                    <EditText
+                        android:id="@+id/et_member_add_mobile"
+                        style="@style/MemberAddPageEditText"
+                        android:hint="手机号"
+                        android:inputType="phone"
+                        android:maxLength="11"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_login_pwd"/>
+
+                    <EditText
+                        android:id="@+id/et_member_add_score"
+                        style="@style/MemberAddPageEditText"
+                        android:hint="积分"
+                        android:inputType="number"
+                        android:maxLength="5"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_login_pwd"/>
+
+                    <Spinner
+                        android:id="@+id/sp_member_add_rank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/rank"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_login_account"/>
+
+                    <EditText
+                        android:id="@+id/et_member_add_card_id"
+                        style="@style/MemberAddPageEditText"
+                        android:hint="消费卡编号"
+                        android:inputType="number"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_member_gender"/>
+
+                    <RadioGroup
+                        android:id="@+id/rg_member_add_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="男"
-                        android:textColor="@color/secondary_text"/>
+                        android:checkedButton="@+id/rb_member_add_boy"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="女"
-                        android:textColor="@color/secondary_text"/>
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rb_member_add_boy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="男"
+                            android:textColor="@color/secondary_text"/>
+
+                        <RadioButton
+                            android:id="@+id/rb_member_add_girl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="女"
+                            android:textColor="@color/secondary_text"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_login"
+                        android:layout_height="@dimen/ic_login"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_member_addr"/>
+
+                    <EditText
+                        android:id="@+id/et_member_add_addr"
+                        style="@style/MemberAddPageEditText"
+                        android:hint="地址"
+                        />
+
+                </LinearLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/ic_login"
-                    android:layout_height="@dimen/ic_login"
-                    android:layout_marginRight="20dp"
-                    android:src="@mipmap/ic_member_addr"/>
-
-                <EditText
-                    android:id="@+id/et_member_addr"
-                    style="@style/MemberAddPageEditText"
-                    android:hint="地址"
-                    android:inputType="phone"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
+        </ScrollView>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
