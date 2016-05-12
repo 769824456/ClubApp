@@ -62,5 +62,11 @@ public class MemberRVAdapter extends RecyclerView.Adapter<MemberRVAdapter.ViewHo
         }
     }
 
+    public void addList(List<MemberVo> data) {
+        if (mList != null) {
+            mList.addAll(data);
+            notifyDataSetChanged();
+        }
+    }
 
 }

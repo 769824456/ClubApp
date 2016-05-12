@@ -80,13 +80,6 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
         mPageNum = 1;
         loadDataFromCloud(mPageNum);
 
-//        mMemberVos = new ArrayList<>();
-//        MemberVo mMemberVo = null;
-//        for (int i = 0; i < 10; i++) {
-//            mMemberVo = new MemberVo(1, "yulongsun" + i, "130675097" + i);
-//            mMemberVos.add(mMemberVo);
-//        }
-//
         mRvMember.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);

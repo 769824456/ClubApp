@@ -31,6 +31,7 @@ import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
+import win.yulongsun.clubapp.response.NullResponse;
 import win.yulongsun.yulongsunutils.ValidateUtils;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
@@ -132,7 +133,7 @@ public class MemberAddActivity extends BaseToolbarActivity {
                     @Override public void onResponse(String response) {
                         hideLoading();
                         Log.d(TAG, "onResponse: " + response);
-                        BaseResponse baseResponse = GsonUtils.changeGsonToBean(response, BaseResponse.class);
+                        NullResponse baseResponse = GsonUtils.changeGsonToBean(response, NullResponse.class);
                         if (baseResponse.errorCode == 0) {
                             ToastUtils.showMessage(MemberAddActivity.this, "添加会员成功");
                             MemberAddActivity.this.finish();

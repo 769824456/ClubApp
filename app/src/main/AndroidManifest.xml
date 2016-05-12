@@ -3,6 +3,7 @@
           package="win.yulongsun.clubapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".common.App"
         android:allowBackup="true"
@@ -44,6 +45,8 @@
         <activity android:name=".ui.activity.member.MemberRechargeActivity">
         </activity>
         <activity android:name=".ui.activity.ForgetPwdActivity">
+        </activity>
+        <activity android:name=".ui.activity.NewPwdActivity">
         </activity>
     </application>
 
