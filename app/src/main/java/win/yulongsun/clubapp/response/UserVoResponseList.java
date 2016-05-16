@@ -11,6 +11,6 @@ import win.yulongsun.yulongsunutils.response.BaseResponse;
  * USER : yulongsun on 2016/5/8
  * NOTE :
  */
-public class UserVoResponse extends BaseResponse {
-    public UserVo result;
+public class UserVoResponseList extends BaseResponse {
+    public List<UserVo> result;
 }

@@ -1,4 +1,4 @@
-package win.yulongsun.yulongsunutils;
+package win.yulongsun.yulongsunutils.utils;
 
 import java.io.*;
 
@@ -10,8 +10,7 @@ import java.io.*;
  */
 public class Base64Util {
 
-    public Base64Util() {
-    }
+    private Base64Util() { }
 
     /**
      * 功能：编码字符串

@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import butterknife.Bind;
@@ -59,7 +61,7 @@ public class UserRVAdapter extends RecyclerView.Adapter<UserRVAdapter.ViewHolder
                 mContext.startActivity(intent);
             }
         });
-
+        Glide.with(mContext).load(userVo.avatar).into(holder.mIvItemUserAvatar);
     }
 
     @Override public int getItemCount() {
@@ -78,6 +80,30 @@ public class UserRVAdapter extends RecyclerView.Adapter<UserRVAdapter.ViewHolder
             ButterKnife.bind(this, itemView);
             itemView.setTag(this);
         }
-
     }
+
+    public void addData(int position, List<UserVo> data) {
+        if (mList != null && data.size() > 0) {
+            mList.addAll(data);//所有元素添加到此列表的尾部
+            notifyItemRangeChanged(position, data.size());
+        }
+    }
+
+    public UserVo getData(int position) {
+        return mList.get(position);
+    }
+
+    public List<UserVo> getDatas() {
+        return mList;
+    }
+
+    public void clearData() {
+        mList.clear();
+        notifyItemRangeRemoved(0, mList.size());
+    }
+
+    public void addData(List<UserVo> datas) {
+        addData(0, datas);
+    }
+
 }

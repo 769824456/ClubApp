@@ -1,6 +1,7 @@
 package win.yulongsun.clubapp.ui.activity.user;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +9,28 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import okhttp3.Call;
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.common.Api;
+import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.entity.UserVo;
+import win.yulongsun.clubapp.response.UserVoResponse;
+import win.yulongsun.clubapp.response.UserVoResponseList;
 import win.yulongsun.clubapp.ui.adapter.UserRVAdapter;
+import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
+import win.yulongsun.yulongsunutils.utils.GsonUtils;
+import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
 /**
  * PROJECT_NAME : ClubApp
@@ -22,15 +38,16 @@ import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
  * USER : yulongsun on 2016/4/13
  * NOTE :店员
  */
-public class UserActivity extends BaseToolbarActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class UserActivity extends BaseToolbarActivity {
     private static final String TAG = UserActivity.class.getSimpleName();
-    @Bind(R.id.tl_user)  Toolbar             mTlUser;
-    @Bind(R.id.rcv_user) RecyclerView        mRcvUser;
-    @Bind(R.id.srf_user) SwipeRefreshLayout  mSrfUser;
-    private              ArrayList<UserVo>   mUserVoList;
-    private              UserRVAdapter       mUserRVAdapter;
-    private              LinearLayoutManager mLayoutManager;
-    private boolean isLoadingMore = false;
+    @Bind(R.id.tl_user)  Toolbar               mTlUser;
+    @Bind(R.id.rcv_user) RecyclerView          mRcvUser;
+    @Bind(R.id.mrl_user) MaterialRefreshLayout mMrlUser;
+    private              List<UserVo>          mUserVoList;
+    private              UserRVAdapter         mUserRVAdapter;
+    private              LinearLayoutManager   mLayoutManager;
+    private              String                user_c_id;
+    private int pageNum = 1;
 
     @Override protected String getToolbarTitle() {
         return "店员";
@@ -59,54 +76,94 @@ public class UserActivity extends BaseToolbarActivity implements SwipeRefreshLay
         return super.onOptionsItemSelected(item);
     }
 
+    @Override protected void initViews() {
+        super.initViews();
+        mMrlUser.autoRefresh();
+    }
+
+    @Override protected void initDatas() {
+        super.initDatas();
+        user_c_id = ACache.get(this).getAsString("user_c_id");
+        mUserVoList = new ArrayList<UserVo>();
+        mUserRVAdapter = new UserRVAdapter(UserActivity.this, mUserVoList);
+        mRcvUser.setAdapter(mUserRVAdapter);
+    }
+
     @Override protected void initListeners() {
         super.initListeners();
-        mSrfUser.setOnRefreshListener(this);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRcvUser.setLayoutManager(mLayoutManager);
-        mRcvUser.setOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                int lastVisibleItem = ((LinearLayoutManager) mLayoutManager).findLastVisibleItemPosition();
-                int totalItemCount  = mLayoutManager.getItemCount();
-                //lastVisibleItem >= totalItemCount - 4 表示剩下4个item自动加载，各位自由选择
-                // dy>0 表示向下滑动
-                if (lastVisibleItem >= totalItemCount - 4 && dy > 0) {
-                    if (isLoadingMore) {
-                        Log.d(TAG, "ignore manually update!");
-                    } else {
-                        loadMore();//这里多线程也要手动控制isLoadingMore
-                        isLoadingMore = false;
-                    }
-                }
+        mMrlUser.setMaterialRefreshListener(new MaterialRefreshListener() {
+
+            @Override public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+                super.onRefreshLoadMore(materialRefreshLayout);
+                loadMore();
+            }
+
+            @Override public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                loadDataFromCloud();
             }
         });
     }
 
     private void loadMore() {
-        isLoadingMore = true;
+        OkHttpUtils.post().url(Api.HOST + Api.USER + "listUser")
+                .addParams("c_id", user_c_id)
+                .addParams("page_num", String.valueOf(pageNum))
+                .addParams("page_size", String.valueOf(Constants.PAGE_SIZE))
+                .build()
+                .execute(new StringCallback() {
+                    @Override public void onError(Call call, Exception e) {
+
+                    }
+
+                    @Override public void onResponse(String response) {
+                        Log.d(TAG, "" + response);
+                        mMrlUser.finishRefreshLoadMore();
+                        UserVoResponseList userVoResponse = GsonUtils.changeGsonToBean(response, UserVoResponseList.class);
+                        if (userVoResponse.error) {
+                            ToastUtils.showMessage(UserActivity.this, userVoResponse.errorMsg);
+                        } else {
+                            mUserVoList = userVoResponse.result;
+                            pageNum++;
+                            mUserRVAdapter.addData(mUserVoList);
+                            if (mUserVoList.size() == 0) {
+                                ToastUtils.showMessage(UserActivity.this, "没有更多数据了");
+                            }
+                        }
+                    }
+                });
+    }
+
+
+    private void loadDataFromCloud() {
+        pageNum = 1;
+        OkHttpUtils.post().url(Api.HOST + Api.USER + "listUser")
+                .addParams("c_id", user_c_id)
+                .addParams("page_num", String.valueOf(pageNum))
+                .addParams("page_size", String.valueOf(Constants.PAGE_SIZE))
+                .build()
+                .execute(new StringCallback() {
+                    @Override public void onError(Call call, Exception e) {
+
+                    }
+
+                    @Override public void onResponse(String response) {
+                        Log.d(TAG, "" + response);
+                        mMrlUser.finishRefresh();
+                        UserVoResponseList userVoResponse = GsonUtils.changeGsonToBean(response, UserVoResponseList.class);
+                        if (userVoResponse.error) {
+                            ToastUtils.showMessage(UserActivity.this, userVoResponse.errorMsg);
+                        } else {
+                            mUserVoList = userVoResponse.result;
+                            pageNum++;
+                            mUserRVAdapter.clearData();
+                            mUserRVAdapter.addData(mUserVoList);
+                        }
+                    }
+                });
 
     }
 
-    @Override protected void initDatas() {
-        super.initDatas();
-        mUserVoList = new ArrayList<UserVo>();
-        for (int i = 0; i < 10; i++) {
-            UserVo userVo = new UserVo();
-            userVo.id = i;
-            userVo.name = "员工" + i;
-            userVo.mobile = "13067509781" + i;
-            userVo.create_time = "2016-1-1";
-            userVo.gender = 1;
-            userVo.job_id = 10000 + i;
-            mUserVoList.add(userVo);
-        }
 
-        mUserRVAdapter = new UserRVAdapter(UserActivity.this, mUserVoList);
-        mRcvUser.setAdapter(mUserRVAdapter);
-    }
-
-    @Override public void onRefresh() {
-
-    }
 }
