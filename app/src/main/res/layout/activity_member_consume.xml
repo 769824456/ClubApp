@@ -44,6 +44,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:id="@+id/et_consume_card_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
@@ -74,6 +75,7 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:id="@+id/et_consume_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -84,6 +86,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_consume_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

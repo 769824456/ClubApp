@@ -59,8 +59,8 @@ public class MemberHistoryActivity extends BaseToolbarActivity {
     private void loadDataFromCloud() {
         String user_c_id = ACache.get(MemberHistoryActivity.this).getAsString("user_c_id");
         mSrfMemberHistory.setRefreshing(true);
-        OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "history")
-                .addParams("c_id", user_c_id)
+        OkHttpUtils.post().url(Api.HOST + Api.ORDER + "listOrder")
+                .addParams("user_c_id", user_c_id)
                 .addParams("page_num", page_num + "")
                 .addParams("page_size", Constants.PAGE_SIZE + "")
                 .build()

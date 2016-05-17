@@ -8,6 +8,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import okhttp3.Call;
 import win.yulongsun.clubapp.common.Api;
+import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.entity.UserVo;
 import win.yulongsun.clubapp.response.UserVoResponse;
 import win.yulongsun.clubapp.ui.view.IUserLoginView;
@@ -83,17 +84,17 @@ public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
 
     private void cacheResponse() {
         ACache aCache = ACache.get(context);
-        aCache.put("user_id", mUserVo.id + "");
-        aCache.put("user_name", mUserVo.name);
-        aCache.put("user_mobile", mUserVo.mobile);
-        aCache.put("user_avatar", mUserVo.avatar);
-        aCache.put("user_addr", mUserVo.addr);
-        aCache.put("user_gender", mUserVo.gender + "");
-        aCache.put("user_job_id", mUserVo.job_id + "");
-        aCache.put("user_c_id", mUserVo.c_id + "");
+        aCache.put(Constants.USER_ID, mUserVo.id + "");
+        aCache.put(Constants.USER_NAME, mUserVo.name);
+        aCache.put(Constants.USER_MOBILE, mUserVo.mobile);
+        aCache.put(Constants.USER_AVATAR, mUserVo.avatar);
+        aCache.put(Constants.USER_ADDR, mUserVo.addr);
+        aCache.put(Constants.USER_GENDER, mUserVo.gender + "");
+        aCache.put(Constants.USER_JOB_ID, mUserVo.job_id + "");
+        aCache.put(Constants.USER_C_ID, mUserVo.c_id + "");
         aCache.put("user_r_id", mUserVo.r_id + "");
         aCache.put("user_is_enable", mUserVo.is_enable + "");
-        aCache.put("is_login", "1");
+        aCache.put(Constants.IS_LOGIN, "1");
     }
 
     public void register() {

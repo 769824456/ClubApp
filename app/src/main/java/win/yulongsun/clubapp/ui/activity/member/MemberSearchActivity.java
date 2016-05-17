@@ -1,7 +1,9 @@
 package win.yulongsun.clubapp.ui.activity.member;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -10,19 +12,28 @@ import android.widget.TextView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
+import win.yulongsun.clubapp.entity.MemberVo;
+import win.yulongsun.clubapp.response.MemberVoResponseList;
+import win.yulongsun.clubapp.response.NullResponse;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
+import win.yulongsun.yulongsunutils.utils.GsonUtils;
 
 //搜索
 public class MemberSearchActivity extends BaseToolbarActivity implements TextView.OnEditorActionListener {
 
-    @Bind(R.id.tl_member_search)  Toolbar  mTlMemberSearch;
-    @Bind(R.id.et_search_content) EditText mEtSearchContent;
+    private static final String TAG = MemberSearchActivity.class.getSimpleName();
+    @Bind(R.id.tl_member_search)  Toolbar             mTlMemberSearch;
+    @Bind(R.id.et_search_content) EditText            mEtSearchContent;
+    @Bind(R.id.rv_search)         RecyclerView        mRvSearch;
+    private                       ArrayList<MemberVo> mMemberVoList;
 
     @Override public int getLayoutResId() {
         return R.layout.activity_member_search;
@@ -38,6 +49,12 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
 
     @Override protected Toolbar getToolbarLayout() {
         return mTlMemberSearch;
+    }
+
+
+    @Override protected void initViews() {
+        super.initViews();
+        mMemberVoList = new ArrayList<MemberVo>();
     }
 
     @Override protected void initListeners() {
@@ -56,10 +73,11 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
     private void loadDataFromCloud(String name) {
         ACache aCache    = ACache.get(this);
         String user_c_id = aCache.getAsString("user_c_id");
+        showLoading("搜索中...");
         OkHttpUtils.post()
-                .url(Api.HOST + Api.USER + "search")
-                .addParams("c_id", user_c_id)
-                .addParams("name", name)
+                .url(Api.HOST + Api.USER + "queryUser")
+                .addParams("member_c_id", user_c_id)
+                .addParams("member_name", name)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -69,8 +87,12 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
 
                     @Override
                     public void onResponse(String response) {
+                        hideLoading();
+                        Log.d(TAG, response);
+                        MemberVoResponseList memberVoResponseList = GsonUtils.changeGsonToBean(response, MemberVoResponseList.class);
 
                     }
                 });
     }
+
 }
