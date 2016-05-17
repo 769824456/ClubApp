@@ -50,6 +50,7 @@
                     android:layout_marginLeft="25dp"
                     android:inputType="phone"
                     android:maxLength="11"
+                    android:textSize="14sp"
                     android:singleLine="true"/>
 
             </LinearLayout>
@@ -81,6 +82,7 @@
                     android:layout_marginLeft="10dp"
                     android:inputType="numberDecimal"
                     android:maxLength="5"
+                    android:textSize="14sp"
                     android:singleLine="true"/>
 
             </LinearLayout>

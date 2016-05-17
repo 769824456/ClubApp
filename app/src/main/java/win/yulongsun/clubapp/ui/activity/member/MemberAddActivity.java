@@ -31,11 +31,10 @@ import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
-import win.yulongsun.clubapp.response.NullResponse;
+import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.yulongsunutils.ValidateUtils;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
-import win.yulongsun.yulongsunutils.response.BaseResponse;
 import win.yulongsun.yulongsunutils.utils.GsonUtils;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 

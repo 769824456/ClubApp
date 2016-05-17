@@ -1,6 +1,5 @@
-package win.yulongsun.clubapp.ui.activity;
+package win.yulongsun.clubapp.ui.activity.forgetpwd;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
@@ -9,12 +8,11 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
-import win.yulongsun.clubapp.response.NullResponse;
+import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.yulongsunutils.MD5Utils;
 import win.yulongsun.yulongsunutils.ValidateUtils;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;

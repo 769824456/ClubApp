@@ -1,8 +1,6 @@
 package win.yulongsun.clubapp.ui.activity.user;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,14 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
-import win.yulongsun.clubapp.entity.UserVo;
-import win.yulongsun.clubapp.response.UserVoResponse;
-import win.yulongsun.clubapp.response.UserVoResponseList;
+import win.yulongsun.clubapp.net.entity.UserVo;
+import win.yulongsun.clubapp.net.response.UserVoResponseList;
 import win.yulongsun.clubapp.ui.adapter.UserRVAdapter;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;

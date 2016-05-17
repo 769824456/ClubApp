@@ -1,7 +1,6 @@
 package win.yulongsun.clubapp.ui.view;
 
 
-import win.yulongsun.clubapp.entity.UserVo;
 import win.yulongsun.yulongsunutils.common.IBaseView;
 
 /*

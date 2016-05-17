@@ -1,8 +1,8 @@
 package win.yulongsun.clubapp.ui.activity.member;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -10,18 +10,20 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
+import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.yulongsunutils.ValidateUtils;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
+import win.yulongsun.yulongsunutils.utils.GsonUtils;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
 //充值
 public class MemberRechargeActivity extends BaseToolbarActivity {
 
+    private static final String TAG = MemberRechargeActivity.class.getSimpleName();
     @Bind(R.id.tl_member_recharge)        Toolbar  mTlMemberRecharge;
     @Bind(R.id.et_member_recharge_mobile) EditText mEtMemberRechargeMobile;
     @Bind(R.id.et_member_recharge_num)    EditText mEtMemberRechargeNum;
@@ -46,7 +48,7 @@ public class MemberRechargeActivity extends BaseToolbarActivity {
     public void btnRecharge(View view) {
         String mobile = mEtMemberRechargeMobile.getText().toString();
         String num    = mEtMemberRechargeNum.getText().toString();
-        if (ValidateUtils.isPwdValid(mobile)) {
+        if (!ValidateUtils.isPwdValid(mobile)) {
             ToastUtils.showMessage(MemberRechargeActivity.this, "手机账号不能为空");
             return;
         }
@@ -56,18 +58,26 @@ public class MemberRechargeActivity extends BaseToolbarActivity {
         }
         ACache aCache  = ACache.get(this);
         String user_id = aCache.getAsString("user_id");
+        showLoading("充值中...");
         OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "recharge")
-                .addParams("mobile", mobile)
-                .addParams("num", num)
-                .addParams("operator_id", user_id)
+                .addParams("member_mobile", mobile)
+                .addParams("member_money", num)
                 .build()
                 .execute(new StringCallback() {
                     @Override public void onError(Call call, Exception e) {
-
+                        hideLoading();
                     }
 
                     @Override public void onResponse(String response) {
-
+                        hideLoading();
+                        Log.d(TAG, response);
+                        NullResponse nullResponse = GsonUtils.changeGsonToBean(response, NullResponse.class);
+                        if (nullResponse.error) {
+                            ToastUtils.showMessage(MemberRechargeActivity.this, nullResponse.errorMsg);
+                        } else {
+                            ToastUtils.showMessage(MemberRechargeActivity.this, "充值成功");
+                            MemberRechargeActivity.this.finish();
+                        }
                     }
                 });
 

@@ -44,9 +44,9 @@
         </activity>
         <activity android:name=".ui.activity.member.MemberRechargeActivity">
         </activity>
-        <activity android:name=".ui.activity.ForgetPwdActivity">
+        <activity android:name=".ui.activity.forgetpwd.ForgetPwdActivity">
         </activity>
-        <activity android:name=".ui.activity.NewPwdActivity">
+        <activity android:name=".ui.activity.forgetpwd.NewPwdActivity">
         </activity>
     </application>
 

@@ -18,7 +18,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.clubapp.entity.UserVo;
+import win.yulongsun.clubapp.net.entity.UserVo;
 import win.yulongsun.clubapp.ui.activity.user.UserUpdateActivity;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 

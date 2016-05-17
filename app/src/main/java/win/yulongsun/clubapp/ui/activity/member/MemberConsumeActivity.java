@@ -1,27 +1,29 @@
 package win.yulongsun.clubapp.ui.activity.member;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
+import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.yulongsunutils.ValidateUtils;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
+import win.yulongsun.yulongsunutils.utils.GsonUtils;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
 //消费
 public class MemberConsumeActivity extends BaseToolbarActivity {
 
+    private static final String TAG = MemberConsumeActivity.class.getSimpleName();
     @Bind(R.id.tl_member_consume)  Toolbar  mTlMemberConsume;
     @Bind(R.id.et_consume_card_id) EditText mEtConsumeCardId;
     @Bind(R.id.et_consume_num)     EditText mEtConsumeNum;
@@ -48,7 +50,6 @@ public class MemberConsumeActivity extends BaseToolbarActivity {
         super.initDatas();
         user_id = ACache.get(MemberConsumeActivity.this).getAsString(Constants.USER_ID);
         user_c_id = ACache.get(MemberConsumeActivity.this).getAsString(Constants.USER_C_ID);
-
     }
 
     @OnClick(R.id.btn_consume_submit) public void onClick() {
@@ -71,12 +72,19 @@ public class MemberConsumeActivity extends BaseToolbarActivity {
                 .build()
                 .execute(new StringCallback() {
                     @Override public void onError(Call call, Exception e) {
-
+                        hideLoading();
                     }
 
                     @Override public void onResponse(String response) {
                         hideLoading();
-
+                        Log.d(TAG, response);
+                        NullResponse nullResponse = GsonUtils.changeGsonToBean(response, NullResponse.class);
+                        if (nullResponse.error) {
+                            ToastUtils.showMessage(MemberConsumeActivity.this, nullResponse.errorMsg);
+                        } else {
+                            ToastUtils.showMessage(MemberConsumeActivity.this, "扣费成功");
+                            MemberConsumeActivity.this.finish();
+                        }
                     }
                 });
     }

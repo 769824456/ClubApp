@@ -9,7 +9,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import okhttp3.Call;
 import win.yulongsun.clubapp.common.Api;
-import win.yulongsun.clubapp.error.ErrorHandler;
+import win.yulongsun.clubapp.net.error.ErrorHandler;
 import win.yulongsun.clubapp.ui.view.IUserRegView;
 import win.yulongsun.yulongsunutils.MD5Utils;
 import win.yulongsun.yulongsunutils.ValidateUtils;

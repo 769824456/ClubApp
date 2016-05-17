@@ -2,7 +2,6 @@ package win.yulongsun.clubapp.ui.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,25 +10,20 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.clubapp.entity.HomeRV;
+import win.yulongsun.clubapp.net.entity.HomeRV;
 import win.yulongsun.clubapp.ui.activity.daily.DailyActivity;
 import win.yulongsun.clubapp.ui.activity.member.MemberActivity;
 import win.yulongsun.clubapp.ui.activity.mine.MineActivity;

@@ -1,4 +1,4 @@
-package win.yulongsun.clubapp.entity;
+package win.yulongsun.clubapp.net.entity;
 
 
 public class UserVo {

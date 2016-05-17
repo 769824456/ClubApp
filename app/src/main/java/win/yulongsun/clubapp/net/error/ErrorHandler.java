@@ -1,4 +1,4 @@
-package win.yulongsun.clubapp.error;
+package win.yulongsun.clubapp.net.error;
 
 import android.content.Context;
 import android.util.Log;

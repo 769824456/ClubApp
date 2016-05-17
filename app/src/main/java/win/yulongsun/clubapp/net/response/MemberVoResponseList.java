@@ -1,13 +1,13 @@
-package win.yulongsun.clubapp.response;
+package win.yulongsun.clubapp.net.response;
 
 import java.util.List;
 
-import win.yulongsun.clubapp.entity.MemberVo;
+import win.yulongsun.clubapp.net.entity.MemberVo;
 import win.yulongsun.yulongsunutils.response.BaseResponse;
 
 /**
  * PROJECT_NAME : ClubApp
- * PACKAGE_NAME : win.yulongsun.clubapp.response
+ * PACKAGE_NAME : win.yulongsun.clubapp.net.response
  * USER : yulongsun on 2016/5/9
  * NOTE :
  */

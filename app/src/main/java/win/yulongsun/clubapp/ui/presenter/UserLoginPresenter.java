@@ -9,14 +9,13 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import okhttp3.Call;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
-import win.yulongsun.clubapp.entity.UserVo;
-import win.yulongsun.clubapp.response.UserVoResponse;
+import win.yulongsun.clubapp.net.entity.UserVo;
+import win.yulongsun.clubapp.net.response.UserVoResponse;
 import win.yulongsun.clubapp.ui.view.IUserLoginView;
 import win.yulongsun.yulongsunutils.MD5Utils;
 import win.yulongsun.yulongsunutils.ValidateUtils;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BasePresenter;
-import win.yulongsun.yulongsunutils.response.ResponseObject;
 import win.yulongsun.yulongsunutils.utils.GsonUtils;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 

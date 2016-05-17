@@ -1,8 +1,8 @@
-package win.yulongsun.clubapp.entity;
+package win.yulongsun.clubapp.net.entity;
 
 /**
  * PROJECT_NAME : ClubApp
- * PACKAGE_NAME : win.yulongsun.clubapp.entity
+ * PACKAGE_NAME : win.yulongsun.clubapp.net.entity
  * USER : yulongsun on 2016/5/4
  * NOTE :
  */

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="win.yulongsun.clubapp.ui.activity.NewPwdActivity">
+    tools:context=".ui.activity.forgetpwd.NewPwdActivity">
 
     <include
         android:id="@+id/tl_new_pwd"

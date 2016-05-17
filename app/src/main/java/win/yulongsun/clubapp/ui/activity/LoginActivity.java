@@ -9,6 +9,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.OnClick;
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.ui.activity.forgetpwd.ForgetPwdActivity;
 import win.yulongsun.clubapp.ui.presenter.UserLoginPresenter;
 import win.yulongsun.clubapp.ui.view.IUserLoginView;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;

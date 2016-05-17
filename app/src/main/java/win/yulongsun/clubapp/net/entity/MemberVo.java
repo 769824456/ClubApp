@@ -1,6 +1,4 @@
-package win.yulongsun.clubapp.entity;
-
-import java.sql.Timestamp;
+package win.yulongsun.clubapp.net.entity;
 
 /**
  * PROJECT_NAME : ClubApp
@@ -22,6 +20,7 @@ public class MemberVo {
     public int    operator_id;
     public int    is_enable;
     public String create_time;
+    public double num;//消费额
 
     public MemberVo() {
     }

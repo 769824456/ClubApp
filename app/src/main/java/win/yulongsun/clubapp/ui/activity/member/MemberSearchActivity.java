@@ -1,6 +1,5 @@
 package win.yulongsun.clubapp.ui.activity.member;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,18 +12,18 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
-import win.yulongsun.clubapp.entity.MemberVo;
-import win.yulongsun.clubapp.response.MemberVoResponseList;
-import win.yulongsun.clubapp.response.NullResponse;
+import win.yulongsun.clubapp.net.entity.MemberVo;
+import win.yulongsun.clubapp.net.response.MemberVoResponseList;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
 import win.yulongsun.yulongsunutils.utils.GsonUtils;
+import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
 //搜索
 public class MemberSearchActivity extends BaseToolbarActivity implements TextView.OnEditorActionListener {
@@ -75,7 +74,7 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
         String user_c_id = aCache.getAsString("user_c_id");
         showLoading("搜索中...");
         OkHttpUtils.post()
-                .url(Api.HOST + Api.USER + "queryUser")
+                .url(Api.HOST + Api.MEMBER + "queryMember")
                 .addParams("member_c_id", user_c_id)
                 .addParams("member_name", name)
                 .build()
@@ -90,7 +89,16 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
                         hideLoading();
                         Log.d(TAG, response);
                         MemberVoResponseList memberVoResponseList = GsonUtils.changeGsonToBean(response, MemberVoResponseList.class);
+                        if (memberVoResponseList.error) {
+                            ToastUtils.showMessage(MemberSearchActivity.this, memberVoResponseList.errorMsg);
+                        } else {
+                            List<MemberVo> memberVoList = memberVoResponseList.result;
+                            if (memberVoList.size() == 0) {
+                                ToastUtils.showMessage(MemberSearchActivity.this, "查询不到该用户");
+                            } else {
 
+                            }
+                        }
                     }
                 });
     }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import win.yulongsun.clubapp.R;
-import win.yulongsun.clubapp.entity.MemberVo;
+import win.yulongsun.clubapp.net.entity.MemberVo;
 
 /**
  * PROJECT_NAME : ClubApp
