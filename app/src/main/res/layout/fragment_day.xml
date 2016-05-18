@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="win.yulongsun.clubapp.ui.activity.statistics.DayFragment">
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lc_statistics_day"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/tl_statistics"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        />
+</LinearLayout>

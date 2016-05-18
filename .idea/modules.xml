@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/ClubApp.iml" filepath="$PROJECT_DIR$/ClubApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/material_refresh_layout_library/material_refresh_layout_library.iml" filepath="$PROJECT_DIR$/material_refresh_layout_library/material_refresh_layout_library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/material_refresh_layout_library/material_refresh_layout_library.iml" filepath="$PROJECT_DIR$/material_refresh_layout_library/material_refresh_layout_library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/superadapter/superadapter.iml" filepath="$PROJECT_DIR$/superadapter/superadapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/superadapter/superadapter.iml" filepath="$PROJECT_DIR$/superadapter/superadapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/yulongsun_pulltorefresh/yulongsun_pulltorefresh.iml" filepath="$PROJECT_DIR$/yulongsun_pulltorefresh/yulongsun_pulltorefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/yulongsun_utils/yulongsun_utils.iml" filepath="$PROJECT_DIR$/yulongsun_utils/yulongsun_utils.iml" />
