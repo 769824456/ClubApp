@@ -72,7 +72,7 @@ public class NewPwdActivity extends BaseToolbarActivity {
                         @Override public void onResponse(String response) {
                             hideLoading();
                             Log.d(TAG, response);
-                            NullResponse nullResponse = GsonUtils.changeGsonToBean(response, NullResponse.class);
+                            NullResponse nullResponse = GsonUtils.parseToBean(response, NullResponse.class);
                             if (nullResponse.error) {
                                 ToastUtils.showMessage(NewPwdActivity.this, nullResponse.errorMsg);
                             } else {

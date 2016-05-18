@@ -88,7 +88,7 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
                     public void onResponse(String response) {
                         hideLoading();
                         Log.d(TAG, response);
-                        MemberVoResponseList memberVoResponseList = GsonUtils.changeGsonToBean(response, MemberVoResponseList.class);
+                        MemberVoResponseList memberVoResponseList = GsonUtils.parseToBean(response, MemberVoResponseList.class);
                         if (memberVoResponseList.error) {
                             ToastUtils.showMessage(MemberSearchActivity.this, memberVoResponseList.errorMsg);
                         } else {

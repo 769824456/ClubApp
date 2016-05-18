@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/material_refresh_layout_library" />
+            <option value="$PROJECT_DIR$/superadapter" />
             <option value="$PROJECT_DIR$/yulongsun_pulltorefresh" />
             <option value="$PROJECT_DIR$/yulongsun_utils" />
           </set>
@@ -20,6 +21,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/material_refresh_layout_library" />
+            <option value="$PROJECT_DIR$/superadapter" />
             <option value="$PROJECT_DIR$/yulongsun_pulltorefresh" />
             <option value="$PROJECT_DIR$/yulongsun_utils" />
           </set>

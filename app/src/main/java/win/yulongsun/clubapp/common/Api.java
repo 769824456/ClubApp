@@ -11,6 +11,6 @@ public interface Api {
     String MANAGER = "/manager/";
     String USER    = "/user/";
     String MEMBER  = "/member/";
-    String SELL    = "/sell/";
+    String BIll    = "/bill/";
     String ORDER   = "/order/";
 }

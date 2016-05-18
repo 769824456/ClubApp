@@ -116,7 +116,7 @@ public class UserActivity extends BaseToolbarActivity {
                     @Override public void onResponse(String response) {
                         Log.d(TAG, "" + response);
                         mMrlUser.finishRefreshLoadMore();
-                        UserVoResponseList userVoResponse = GsonUtils.changeGsonToBean(response, UserVoResponseList.class);
+                        UserVoResponseList userVoResponse = GsonUtils.parseToBean(response, UserVoResponseList.class);
                         if (userVoResponse.error) {
                             ToastUtils.showMessage(UserActivity.this, userVoResponse.errorMsg);
                         } else {
@@ -147,7 +147,7 @@ public class UserActivity extends BaseToolbarActivity {
                     @Override public void onResponse(String response) {
                         Log.d(TAG, "" + response);
                         mMrlUser.finishRefresh();
-                        UserVoResponseList userVoResponse = GsonUtils.changeGsonToBean(response, UserVoResponseList.class);
+                        UserVoResponseList userVoResponse = GsonUtils.parseToBean(response, UserVoResponseList.class);
                         if (userVoResponse.error) {
                             ToastUtils.showMessage(UserActivity.this, userVoResponse.errorMsg);
                         } else {

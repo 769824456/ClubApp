@@ -68,13 +68,17 @@ public class MineActivity extends BaseToolbarActivity {
         String user_c_id      = mACache.getAsString("user_c_id");
         String user_r_id      = mACache.getAsString("user_r_id");
         String user_is_enable = mACache.getAsString("user_is_enable");
-        Log.d(TAG, "initDatas: user_r_id"+user_r_id);
+        Log.d(TAG, "initDatas: user_r_id" + user_r_id);
         //avatar
         ImageLoadManager.getInstance().with(MineActivity.this).load(user_avatar).into(mCivMineAvatar);
         //name
         mTvMineName.setText(user_name);
         //gender
-        mTvMineGender.setText(user_gender);
+        if ("0".equals(user_gender)) {
+            mTvMineGender.setText("女");
+        } else {
+            mTvMineGender.setText("男");
+        }
         //jod_id
         mTvMineJobId.setText(user_job_id);
         //mobile

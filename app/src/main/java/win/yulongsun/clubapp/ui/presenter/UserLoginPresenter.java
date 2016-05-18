@@ -63,7 +63,7 @@ public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
                     @Override public void onResponse(String response) {
                         iView.hideLoading();
                         Log.d(TAG, "onResponse: " + response);
-                        mUserVoResponse = GsonUtils.changeGsonToBean(response, UserVoResponse.class);
+                        mUserVoResponse = GsonUtils.parseToBean(response, UserVoResponse.class);
                         if (mUserVoResponse.errorCode == 0) {
                             mUserVo = mUserVoResponse.result;
                             if (mUserVo.is_enable == 0) {

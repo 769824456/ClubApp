@@ -41,6 +41,8 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:inputType="number"
+                    android:maxLength="5"
                     android:id="@+id/et_daily_order_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,6 +71,8 @@
                     android:textSize="16sp"/>
 
                 <EditText
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
                     android:id="@+id/et_daily_sell_in"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +101,9 @@
                     android:textSize="16sp"/>
 
                 <EditText
-                    android:id="@+id/et_daily_net_income"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:id="@+id/et_daily_profit_in"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"/>
@@ -110,6 +116,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -128,6 +135,7 @@
                     android:id="@+id/et_daily_operator_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:layout_marginLeft="25dp"/>
 
 

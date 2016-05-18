@@ -132,7 +132,7 @@ public class MemberAddActivity extends BaseToolbarActivity {
                     @Override public void onResponse(String response) {
                         hideLoading();
                         Log.d(TAG, "onResponse: " + response);
-                        NullResponse baseResponse = GsonUtils.changeGsonToBean(response, NullResponse.class);
+                        NullResponse baseResponse = GsonUtils.parseToBean(response, NullResponse.class);
                         if (baseResponse.errorCode == 0) {
                             ToastUtils.showMessage(MemberAddActivity.this, "添加会员成功");
                             MemberAddActivity.this.finish();

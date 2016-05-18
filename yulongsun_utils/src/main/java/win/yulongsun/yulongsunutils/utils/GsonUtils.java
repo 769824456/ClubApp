@@ -23,7 +23,7 @@ public class GsonUtils {
         return gsonString;
     }
 
-    public static <T> T changeGsonToBean(String gsonString, Class<T> cls) {
+    public static <T> T parseToBean(String gsonString, Class<T> cls) {
         Gson gson = new Gson();
         T    t    = gson.fromJson(gsonString, cls);
         return t;

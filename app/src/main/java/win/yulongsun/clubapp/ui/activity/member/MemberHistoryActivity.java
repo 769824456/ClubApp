@@ -1,6 +1,5 @@
 package win.yulongsun.clubapp.ui.activity.member;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -19,7 +18,7 @@ import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.net.entity.MemberVo;
 import win.yulongsun.clubapp.net.response.MemberVoResponseList;
-import win.yulongsun.clubapp.ui.adapter.MemberRVAdapter;
+import win.yulongsun.clubapp.ui.adapter.MemberHistoryRVAdapter;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
 import win.yulongsun.yulongsunutils.utils.GsonUtils;
@@ -29,12 +28,11 @@ import win.yulongsun.yulongsunutils.utils.ToastUtils;
 public class MemberHistoryActivity extends BaseToolbarActivity {
 
     private static final String TAG = MemberHistoryActivity.class.getSimpleName();
-    @Bind(R.id.tl_member_history)  Toolbar            mTlMemberHistory;
-    @Bind(R.id.rv_member_history)  RecyclerView       mRvMemberHistory;
-    @Bind(R.id.srf_member_history) SwipeRefreshLayout mSrfMemberHistory;
+    @Bind(R.id.tl_member_history) Toolbar      mTlMemberHistory;
+    @Bind(R.id.rv_member_history) RecyclerView mRvMemberHistory;
     private int mPageNum = 1;
-    private MemberRVAdapter     mMemberRVAdapter;
-    private ArrayList<MemberVo> mMemberVoList;
+    private MemberHistoryRVAdapter mMemberRVAdapter;
+    private ArrayList<MemberVo>    mMemberVoList;
 
     @Override public int getLayoutResId() {
         return R.layout.activity_member_history_activty;
@@ -56,7 +54,7 @@ public class MemberHistoryActivity extends BaseToolbarActivity {
         super.initViews();
         mMemberVoList = new ArrayList<MemberVo>();
         mRvMemberHistory.setLayoutManager(new LinearLayoutManager(MemberHistoryActivity.this));
-        mMemberRVAdapter = new MemberRVAdapter(MemberHistoryActivity.this, mMemberVoList);
+        mMemberRVAdapter = new MemberHistoryRVAdapter(MemberHistoryActivity.this, mMemberVoList, R.layout.item_rv_member_history);
         mRvMemberHistory.setAdapter(mMemberRVAdapter);
     }
 
@@ -67,7 +65,7 @@ public class MemberHistoryActivity extends BaseToolbarActivity {
 
     private void loadDataFromCloud() {
         String user_c_id = ACache.get(MemberHistoryActivity.this).getAsString("user_c_id");
-        mSrfMemberHistory.setRefreshing(true);
+        showLoading("加载中...");
         OkHttpUtils.post().url(Api.HOST + Api.ORDER + "listOrder")
                 .addParams("user_c_id", user_c_id)
                 .addParams("page_num", mPageNum + "")
@@ -75,17 +73,17 @@ public class MemberHistoryActivity extends BaseToolbarActivity {
                 .build()
                 .execute(new StringCallback() {
                     @Override public void onError(Call call, Exception e) {
-                        mSrfMemberHistory.setRefreshing(false);
+                        hideLoading();
                     }
 
                     @Override public void onResponse(String response) {
-                        mSrfMemberHistory.setRefreshing(false);
+                        hideLoading();
                         Log.d(TAG, "onResponse: " + response);
-                        MemberVoResponseList memberVoResponseList = GsonUtils.changeGsonToBean(response, MemberVoResponseList.class);
+                        MemberVoResponseList memberVoResponseList = GsonUtils.parseToBean(response, MemberVoResponseList.class);
                         if (memberVoResponseList.errorCode == 0) {
                             mPageNum++;
                             List<MemberVo> mMemberVos = memberVoResponseList.result;
-                            mMemberRVAdapter.addList(mMemberVos);
+                            mMemberRVAdapter.addAll(mMemberVos);
                         } else {
                             ToastUtils.showMessage(MemberHistoryActivity.this, memberVoResponseList.errorMsg);
                         }

@@ -34,7 +34,7 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
     @Bind(R.id.rv_member)  RecyclerView        mRvMember;
     @Bind(R.id.srf_member) SwipeRefreshLayout  mSrfMember;
     @Bind(R.id.tl_member)  Toolbar             mTlMember;
-    private                ArrayList<MemberVo> mMemberVos;
+    private                ArrayList<MemberVo> mMemberVosList;
     private                MemberRVAdapter     mMemberRVAdapter;
     private                LinearLayoutManager mLayoutManager;
     private boolean isLoadingMore = false;
@@ -44,12 +44,6 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
         return R.layout.activity_member;
     }
 
-    @Override protected void initListeners() {
-        super.initListeners();
-        mSrfMember.setOnRefreshListener(this);
-        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mRvMember.setLayoutManager(mLayoutManager);
-    }
 
     @Override protected String getToolbarTitle() {
         return "会员";
@@ -75,28 +69,21 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
         return super.onOptionsItemSelected(item);
     }
 
+    @Override protected void initViews() {
+        super.initViews();
+        mMemberVosList=new ArrayList<>();
+        mSrfMember.setOnRefreshListener(null);
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRvMember.setLayoutManager(mLayoutManager);
+        mMemberRVAdapter = new MemberRVAdapter(MemberActivity.this, mMemberVosList, R.layout.item_rv_member);
+        mRvMember.setAdapter(mMemberRVAdapter);
+    }
+
     @Override protected void initDatas() {
         super.initDatas();
         mPageNum = 1;
         loadDataFromCloud(mPageNum);
 
-        mRvMember.setOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                int lastVisibleItem = ((LinearLayoutManager) mLayoutManager).findLastVisibleItemPosition();
-                int totalItemCount  = mLayoutManager.getItemCount();
-                //lastVisibleItem >= totalItemCount - 4 表示剩下4个item自动加载，各位自由选择
-                // dy>0 表示向下滑动
-                if (lastVisibleItem >= totalItemCount - 1 && dy > 0) {
-                    if (isLoadingMore) {
-                        Log.d(TAG, "ignore manually update!");
-                    } else {
-                        loadDataFromCloud(mPageNum);//这里多线程也要手动控制isLoadingMore
-                        isLoadingMore = false;
-                    }
-                }
-            }
-        });
     }
 
     private void loadDataFromCloud(int page_num) {
@@ -104,7 +91,7 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
         String user_c_id = ACache.get(MemberActivity.this).getAsString("user_c_id");
         mSrfMember.setRefreshing(true);
         OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "listMember")
-                .addParams("c_id", user_c_id)
+                .addParams("user_c_id", user_c_id)
                 .addParams("page_num", page_num + "")
                 .addParams("page_size", Constants.PAGE_SIZE + "")
                 .build()
@@ -116,12 +103,11 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
                     @Override public void onResponse(String response) {
                         mSrfMember.setRefreshing(false);
                         Log.d(TAG, "onResponse: " + response);
-                        MemberVoResponseList memberVoResponseList = GsonUtils.changeGsonToBean(response, MemberVoResponseList.class);
+                        MemberVoResponseList memberVoResponseList = GsonUtils.parseToBean(response, MemberVoResponseList.class);
                         if (memberVoResponseList.errorCode == 0) {
                             mPageNum++;
                             List<MemberVo> mMemberVos = memberVoResponseList.result;
-                            mMemberRVAdapter = new MemberRVAdapter(MemberActivity.this, mMemberVos);
-                            mRvMember.setAdapter(mMemberRVAdapter);
+                            mMemberRVAdapter.addAll(mMemberVos);
                         } else {
                             ToastUtils.showMessage(MemberActivity.this, memberVoResponseList.errorMsg);
                         }

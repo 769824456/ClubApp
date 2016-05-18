@@ -1,1 +1,1 @@
-include ':app', ':yulongsun_utils', ':yulongsun_pulltorefresh', ':material_refresh_layout_library'
+include ':app', ':yulongsun_utils', ':yulongsun_pulltorefresh', ':material_refresh_layout_library', ':superadapter'
