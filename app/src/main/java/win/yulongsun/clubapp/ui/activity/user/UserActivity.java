@@ -1,16 +1,21 @@
 package win.yulongsun.clubapp.ui.activity.user;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.byteam.superadapter.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,7 @@ import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.net.entity.UserVo;
+import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.clubapp.net.response.UserVoResponseList;
 import win.yulongsun.clubapp.ui.adapter.UserRVAdapter;
 import win.yulongsun.yulongsunutils.cache.ACache;
@@ -34,7 +40,7 @@ import win.yulongsun.yulongsunutils.utils.ToastUtils;
  * USER : yulongsun on 2016/4/13
  * NOTE :店员
  */
-public class UserActivity extends BaseToolbarActivity {
+public class UserActivity extends BaseToolbarActivity implements OnItemClickListener {
     private static final String TAG = UserActivity.class.getSimpleName();
     @Bind(R.id.tl_user)  Toolbar               mTlUser;
     @Bind(R.id.rcv_user) RecyclerView          mRcvUser;
@@ -83,6 +89,8 @@ public class UserActivity extends BaseToolbarActivity {
         mUserVoList = new ArrayList<UserVo>();
         mUserRVAdapter = new UserRVAdapter(UserActivity.this, mUserVoList, R.layout.item_rv_user);
         mRcvUser.setAdapter(mUserRVAdapter);
+        mUserRVAdapter.setOnItemClickListener(this);
+        mMrlUser.setLoadMore(false);
     }
 
     @Override protected void initListeners() {
@@ -93,7 +101,7 @@ public class UserActivity extends BaseToolbarActivity {
 
             @Override public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 super.onRefreshLoadMore(materialRefreshLayout);
-                loadMore();
+//                loadMore();
             }
 
             @Override public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
@@ -154,6 +162,9 @@ public class UserActivity extends BaseToolbarActivity {
                             mUserVoList = userVoResponse.result;
                             pageNum++;
                             mUserRVAdapter.replaceAll(mUserVoList);
+                            if (mUserVoList.size() == 0) {
+                                ToastUtils.showMessage(UserActivity.this, "没有店员");
+                            }
                         }
                     }
                 });
@@ -161,4 +172,33 @@ public class UserActivity extends BaseToolbarActivity {
     }
 
 
+    @Override public void onItemClick(View itemView, int viewType, final int position) {
+        new AlertDialog.Builder(UserActivity.this).setMessage("你确定要删除" + mUserVoList.get(position).name + "吗?")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialog, int which) {
+                        OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "deleteMember")
+                                .addParams("member_id", mUserVoList.get(position).id + "")
+                                .build()
+                                .execute(new StringCallback() {
+                                    @Override public void onError(Call call, Exception e) {
+
+                                    }
+
+                                    @Override public void onResponse(String response) {
+                                        Log.d(TAG, "onResponse: " + response);
+                                        NullResponse nullResponse = GsonUtils.parseToBean(response, NullResponse.class);
+                                        if (nullResponse.error) {
+                                            ToastUtils.showMessage(UserActivity.this, nullResponse.errorMsg);
+                                        } else {
+                                            ToastUtils.showMessage(UserActivity.this, "删除成功");
+                                            mUserRVAdapter.remove(position);
+                                        }
+                                    }
+                                });
+
+
+                    }
+                }).setNegativeButton("取消", null).show();
+
+    }
 }

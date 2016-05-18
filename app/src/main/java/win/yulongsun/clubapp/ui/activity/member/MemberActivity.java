@@ -112,6 +112,10 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
                         if (memberVoResponseList.errorCode == 0) {
                             mMemberVosList = (ArrayList<MemberVo>) memberVoResponseList.result;
                             mMemberRVAdapter.replaceAll(mMemberVosList);
+                            if (mMemberVosList.size() == 0) {
+                                ToastUtils.showMessage(MemberActivity.this, "没有会员");
+                            }
+
                         } else {
                             ToastUtils.showMessage(MemberActivity.this, memberVoResponseList.errorMsg);
                         }

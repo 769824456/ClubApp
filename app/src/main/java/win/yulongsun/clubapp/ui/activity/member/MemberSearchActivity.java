@@ -1,5 +1,6 @@
 package win.yulongsun.clubapp.ui.activity.member;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -20,6 +21,7 @@ import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.net.entity.MemberVo;
 import win.yulongsun.clubapp.net.response.MemberVoResponseList;
+import win.yulongsun.clubapp.ui.adapter.MemberRVAdapter;
 import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
 import win.yulongsun.yulongsunutils.utils.GsonUtils;
@@ -33,6 +35,8 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
     @Bind(R.id.et_search_content) EditText            mEtSearchContent;
     @Bind(R.id.rv_search)         RecyclerView        mRvSearch;
     private                       ArrayList<MemberVo> mMemberVoList;
+    private                       LinearLayoutManager mLayoutManager;
+    private                       MemberRVAdapter     mSearchRVAdapter;
 
     @Override public int getLayoutResId() {
         return R.layout.activity_member_search;
@@ -54,6 +58,11 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
     @Override protected void initViews() {
         super.initViews();
         mMemberVoList = new ArrayList<MemberVo>();
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRvSearch.setLayoutManager(mLayoutManager);
+        mSearchRVAdapter = new MemberRVAdapter(MemberSearchActivity.this, mMemberVoList, R.layout.item_rv_member);
+        mRvSearch.setAdapter(mSearchRVAdapter);
+
     }
 
     @Override protected void initListeners() {
@@ -92,11 +101,11 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
                         if (memberVoResponseList.error) {
                             ToastUtils.showMessage(MemberSearchActivity.this, memberVoResponseList.errorMsg);
                         } else {
-                            List<MemberVo> memberVoList = memberVoResponseList.result;
-                            if (memberVoList.size() == 0) {
+                            mMemberVoList = (ArrayList<MemberVo>) memberVoResponseList.result;
+                            if (mMemberVoList.size() == 0) {
                                 ToastUtils.showMessage(MemberSearchActivity.this, "查询不到该用户");
                             } else {
-
+                                mSearchRVAdapter.replaceAll(mMemberVoList);
                             }
                         }
                     }

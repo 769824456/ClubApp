@@ -82,8 +82,13 @@ public class MemberHistoryActivity extends BaseToolbarActivity {
                         MemberVoResponseList memberVoResponseList = GsonUtils.parseToBean(response, MemberVoResponseList.class);
                         if (memberVoResponseList.errorCode == 0) {
                             mPageNum++;
-                            List<MemberVo> mMemberVos = memberVoResponseList.result;
-                            mMemberRVAdapter.addAll(mMemberVos);
+                            mMemberVoList = (ArrayList<MemberVo>) memberVoResponseList.result;
+                            mMemberRVAdapter.addAll(mMemberVoList);
+
+                            if (mMemberVoList.size() == 0) {
+                                ToastUtils.showMessage(MemberHistoryActivity.this, "没有历史纪录");
+                            }
+
                         } else {
                             ToastUtils.showMessage(MemberHistoryActivity.this, memberVoResponseList.errorMsg);
                         }

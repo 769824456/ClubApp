@@ -30,8 +30,10 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
+import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.net.entity.ChartVo;
 import win.yulongsun.clubapp.net.response.ChartVoResponseList;
+import win.yulongsun.yulongsunutils.cache.ACache;
 import win.yulongsun.yulongsunutils.utils.GsonUtils;
 import win.yulongsun.yulongsunutils.utils.ToastUtils;
 
@@ -51,7 +53,9 @@ public class QuarterFragment extends Fragment {
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        String user_c_id = ACache.get(getActivity()).getAsString(Constants.USER_C_ID);
         OkHttpUtils.post().url(Api.HOST + Api.BIll + "listQuarter")
+                .addParams("user_c_id",user_c_id)
                 .build()
                 .execute(new StringCallback() {
                     @Override public void onError(Call call, Exception e) {
