@@ -113,7 +113,7 @@ public class SuperViewHolder extends RecyclerView.ViewHolder implements ChainSet
         return this;
     }
     @Override
-    public SuperViewHolder setImageURL(Context context,int viewId, String imageURL) {
+    public SuperViewHolder setImageUrl(Context context, int viewId, String imageURL) {
         ImageView view = getView(viewId);
         Glide.with(context).load(imageURL).into(view);
         return this;

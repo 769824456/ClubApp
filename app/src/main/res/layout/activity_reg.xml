@@ -111,7 +111,7 @@
                     android:layout_width="@dimen/ic_reg"
                     android:layout_height="@dimen/ic_reg"
                     android:layout_margin="16dp"
-                    android:src="@mipmap/ic_reg_phone"/>
+                    android:src="@mipmap/ic_reg_mobile"/>
 
                 <EditText
                     android:id="@+id/et_reg_club_phone"

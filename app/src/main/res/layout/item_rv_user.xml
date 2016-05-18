@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/ll_item_user"
+<LinearLayout android:id="@+id/ll_item_user"
+              xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
@@ -36,15 +36,37 @@
                 android:layout_toRightOf="@id/iv_item_user_avatar"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_item_user_job_id_and_name"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="姓名"
-                    android:textSize="18sp"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_item_user_job_id"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="10010"
+                        android:textColor="@color/white"
+                        android:textSize="10sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_item_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="姓名"
+                        android:textSize="18sp"/>
+
+
+                </LinearLayout>
+
 
                 <TextView
-                    android:id="@+id/tv_item_user_phone"
+                    android:id="@+id/tv_item_user_mobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

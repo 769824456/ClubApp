@@ -1,4 +1,4 @@
-package win.yulongsun.yulongsunutils;
+package win.yulongsun.yulongsunutils.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,20 +39,16 @@ public class DateUtil {
     }
 
     /* 将字符串转为时间戳 */
-    public static long getStringToDate(String time) {
-        sf = new SimpleDateFormat("yyyy年MM月dd日");
+    public static Date getStringToDate(String time) {
+        sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         try {
             date = sf.parse(time);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return date.getTime();
+        return date;
     }
 
 
-    public static String getDateTimeFomTimeStamp(String crtime) {
-        return crtime.substring(5, crtime.length()-3);
-    }
 }

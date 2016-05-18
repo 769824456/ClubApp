@@ -23,7 +23,7 @@ public class MemberHistoryRVAdapter extends SuperAdapter<MemberVo> {
     }
 
     @Override public void onBind(SuperViewHolder holder, int viewType, int layoutPosition, MemberVo item) {
-        holder.setText(R.id.tv_item_member_history_num, item.num + "");
+        holder.setText(R.id.tv_item_member_history_num, item.num + "元");
         holder.setText(R.id.tv_item_member_history_name, item.name);
         holder.setText(R.id.tv_item_member_history_card_id, item.card_id + "");
         holder.setText(R.id.tv_item_member_history_create_time, item.create_time);

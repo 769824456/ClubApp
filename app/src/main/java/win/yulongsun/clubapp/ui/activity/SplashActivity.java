@@ -1,9 +1,12 @@
 package win.yulongsun.clubapp.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +27,10 @@ public class SplashActivity extends BaseActivity {
         super.initViews();
         iv_splash_logo = (ImageView) findViewById(R.id.iv_splash_logo);
         tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+            return;
+        }
     }
 
     @Override protected void initDatas() {
@@ -43,7 +50,7 @@ public class SplashActivity extends BaseActivity {
             @Override public void run() {
                 String is_login    = ACache.get(SplashActivity.this).getAsString("is_login");
                 Class  targetClass = null;
-                if ("1".equals(is_login)) {
+                if ("0".equals(is_login)) {
                     targetClass = LoginActivity.class;
                 } else {
                     targetClass = HomeActivity.class;
@@ -55,4 +62,5 @@ public class SplashActivity extends BaseActivity {
             }
         }, 3000);
     }
+
 }

@@ -81,7 +81,7 @@ public class UserActivity extends BaseToolbarActivity {
         super.initDatas();
         user_c_id = ACache.get(this).getAsString("user_c_id");
         mUserVoList = new ArrayList<UserVo>();
-        mUserRVAdapter = new UserRVAdapter(UserActivity.this, mUserVoList);
+        mUserRVAdapter = new UserRVAdapter(UserActivity.this, mUserVoList, R.layout.item_rv_user);
         mRcvUser.setAdapter(mUserRVAdapter);
     }
 
@@ -104,7 +104,7 @@ public class UserActivity extends BaseToolbarActivity {
 
     private void loadMore() {
         OkHttpUtils.post().url(Api.HOST + Api.USER + "listUser")
-                .addParams("c_id", user_c_id)
+                .addParams("user_c_id", user_c_id)
                 .addParams("page_num", String.valueOf(pageNum))
                 .addParams("page_size", String.valueOf(Constants.PAGE_SIZE))
                 .build()
@@ -122,7 +122,7 @@ public class UserActivity extends BaseToolbarActivity {
                         } else {
                             mUserVoList = userVoResponse.result;
                             pageNum++;
-                            mUserRVAdapter.addData(mUserVoList);
+                            mUserRVAdapter.addAll(mUserVoList);
                             if (mUserVoList.size() == 0) {
                                 ToastUtils.showMessage(UserActivity.this, "没有更多数据了");
                             }
@@ -135,7 +135,7 @@ public class UserActivity extends BaseToolbarActivity {
     private void loadDataFromCloud() {
         pageNum = 1;
         OkHttpUtils.post().url(Api.HOST + Api.USER + "listUser")
-                .addParams("c_id", user_c_id)
+                .addParams("user_c_id", user_c_id)
                 .addParams("page_num", String.valueOf(pageNum))
                 .addParams("page_size", String.valueOf(Constants.PAGE_SIZE))
                 .build()
@@ -153,8 +153,7 @@ public class UserActivity extends BaseToolbarActivity {
                         } else {
                             mUserVoList = userVoResponse.result;
                             pageNum++;
-                            mUserRVAdapter.clearData();
-                            mUserRVAdapter.addData(mUserVoList);
+                            mUserRVAdapter.replaceAll(mUserVoList);
                         }
                     }
                 });

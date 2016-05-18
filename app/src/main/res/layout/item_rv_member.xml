@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="110dp"
               android:orientation="horizontal"
     >
 
@@ -14,6 +14,7 @@
         android:layout_marginTop="@dimen/rv_margin_top_bottom">
 
         <RelativeLayout
+            android:id="@+id/rl_item_member"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -36,21 +37,92 @@
                 android:layout_toRightOf="@+id/iv_item_member_avatar"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_item_member_name"
+                <!--name-->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="姓名"
-                    android:textSize="18sp"/>
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_item_member_mobile"
+                    <TextView
+                        android:id="@+id/tv_item_member_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="姓名"
+                        android:textSize="18sp"/>
+
+                    <ImageView
+                        android:id="@+id/iv_item_member_gender"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:src="@mipmap/ic_gender_boy"/>
+                </LinearLayout>
+
+                <!--mobile-->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="13750843926"/>
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/ic_mobile"/>
+
+                    <TextView
+                        android:id="@+id/tv_item_member_mobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="13750843926"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+
+                <!--card_id-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/ic_card"/>
+
+                    <TextView
+                        android:id="@+id/tv_item_member_card_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="10086"
+                        android:textSize="12sp"/>
+                </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_item_member_create_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="2015-5-5"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/tv_item_member_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="青铜"/>
+
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

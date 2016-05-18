@@ -1,13 +1,7 @@
 package win.yulongsun.clubapp.ui.adapter;
 
 import android.content.Context;
-import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.BitmapFactory;
 
 import org.byteam.superadapter.SuperAdapter;
 import org.byteam.superadapter.internal.SuperViewHolder;
@@ -16,6 +10,7 @@ import java.util.List;
 
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.net.entity.MemberVo;
+import win.yulongsun.yulongsunutils.utils.DateUtil;
 
 /**
  * PROJECT_NAME : ClubApp
@@ -34,7 +29,15 @@ public class MemberRVAdapter extends SuperAdapter<MemberVo> {
     @Override public void onBind(SuperViewHolder holder, int viewType, int layoutPosition, MemberVo item) {
         holder.setText(R.id.tv_item_member_name, item.name);
         holder.setText(R.id.tv_item_member_mobile, item.mobile);
-        holder.setImageURL(mContext, R.id.iv_item_member_avatar, item.avatar);
+        holder.setImageUrl(mContext, R.id.iv_item_member_avatar, item.avatar);
+        holder.setText(R.id.tv_item_member_card_id, item.card_id + "");
+        if (item.gender == 0) {
+            holder.setImageBitmap(R.id.iv_item_member_gender, BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.ic_gender_girl));
+        } else {
+            holder.setImageBitmap(R.id.iv_item_member_gender, BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.ic_gender_boy));
+        }
+        holder.setText(R.id.tv_item_member_create_time, item.create_time + "");
+
     }
 //    private List<MemberVo> mList;
 //    private LayoutInflater mLayoutInflater;

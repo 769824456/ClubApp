@@ -33,7 +33,7 @@ interface ChainSetter<VH> {
 
     VH setImageBitmap(int viewId, Bitmap bitmap);
 
-    VH setImageURL(Context context,int viewId,String imageURL);
+    VH setImageUrl(Context context, int viewId, String imageURL);
 
     VH setImageUri(int viewId, Uri imageUri);
 
