@@ -1,4 +1,4 @@
-package win.yulongsun.yulongsunutils;
+package win.yulongsun.yulongsunutils.utils;
 
 import android.app.Activity;
 import android.os.Handler;

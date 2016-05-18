@@ -1,11 +1,11 @@
 package win.yulongsun.yulongsunutils.common;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import butterknife.ButterKnife;
 
@@ -18,7 +18,9 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = BaseActivity.class.getSimpleName();
-    private ProgressBar mProgressBar;
+    private ProgressDialog mProgDialog;
+    private long           beginMillis;
+    private long           endMillis;
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +30,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         initViews();
         initListeners();
         initDatas();
-        mProgressBar = new ProgressBar(this);
     }
 
     protected void initViews() {
-
+        if (mProgDialog == null) {
+            mProgDialog = new ProgressDialog(this);
+        }
+        mProgDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgDialog.setIndeterminate(false);
+        mProgDialog.setCancelable(false);
     }
 
     protected void initListeners() {
@@ -47,22 +53,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     /*获取布局*/
     public abstract int getLayoutResId();
 
-    /*显示对话框*/
-    public void showLoading() {
-        mProgressBar.setVisibility(View.VISIBLE);
-
-    }
 
     /*显示对话框*/
     public void showLoading(String tip) {
-        mProgressBar.setContentDescription(tip);
-        mProgressBar.setVisibility(View.VISIBLE);
+        mProgDialog.setMessage(tip);
+        beginMillis = System.currentTimeMillis();
+        mProgDialog.show();
 
     }
 
     /*隐藏对话框*/
     public void hideLoading() {
-        mProgressBar.setVisibility(View.GONE);
+        if (mProgDialog != null) {
+            endMillis = System.currentTimeMillis();
+            long time = endMillis - beginMillis;
+            Log.d(TAG, "hideLoading: time:"+time);
+            mProgDialog.dismiss();
+        }
     }
 
 

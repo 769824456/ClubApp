@@ -51,24 +51,6 @@ public abstract class BaseToolbarActivity extends BaseActivity implements IBaseV
         return true;
     }
 
-    @Override public void showLoading(String msg) {
-        super.showLoading();
-        if (mProgDialog == null)
-            mProgDialog = new ProgressDialog(this);
-        mProgDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        mProgDialog.setIndeterminate(false);
-        mProgDialog.setCancelable(false);
-        mProgDialog.setMessage(msg);
-        mProgDialog.show();
-    }
-
-    @Override public void hideLoading() {
-        super.hideLoading();
-        if (mProgDialog != null) {
-            mProgDialog.hide();
-//            mProgDialog.dismiss();
-        }
-    }
 
     protected abstract int getMenuResId();
 

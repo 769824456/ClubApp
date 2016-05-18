@@ -7,7 +7,8 @@ package win.yulongsun.clubapp.common;
  * NOTE :
  */
 public interface Api {
-    String HOST    = "http://192.168.1.105:80/api";
+    String HOST    = "http://10.0.0.179:80/api";
+//    String HOST    = "http://192.168.1.105:80/api";
     String MANAGER = "/manager/";
     String USER    = "/user/";
     String MEMBER  = "/member/";

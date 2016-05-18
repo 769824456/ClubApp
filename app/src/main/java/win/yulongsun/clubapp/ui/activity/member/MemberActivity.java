@@ -37,7 +37,6 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
     private                ArrayList<MemberVo> mMemberVosList;
     private                MemberRVAdapter     mMemberRVAdapter;
     private                LinearLayoutManager mLayoutManager;
-    private boolean isLoadingMore = false;
     private int     mPageNum      = 1;
 
     @Override public int getLayoutResId() {
@@ -87,7 +86,6 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
     }
 
     private void loadDataFromCloud(int page_num) {
-        isLoadingMore = true;
         String user_c_id = ACache.get(MemberActivity.this).getAsString("user_c_id");
         mSrfMember.setRefreshing(true);
         OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "listMember")
