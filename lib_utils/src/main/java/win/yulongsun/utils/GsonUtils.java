@@ -1,4 +1,4 @@
-package win.yulongsun.utils.utils;
+package win.yulongsun.utils;
 
 
 import java.util.List;

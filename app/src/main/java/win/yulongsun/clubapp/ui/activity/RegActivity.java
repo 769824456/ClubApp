@@ -10,8 +10,8 @@ import butterknife.Bind;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.ui.presenter.UserRegPresenter;
 import win.yulongsun.clubapp.ui.view.IUserRegView;
-import win.yulongsun.utils.common.BaseToolbarActivity;
-import win.yulongsun.utils.utils.ToastUtils;
+import win.yulongsun.uiframework.BaseToolbarActivity;
+import win.yulongsun.utils.ToastUtils;
 
 /**
  * PROJECT_NAME : ClubApp

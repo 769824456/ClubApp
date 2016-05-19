@@ -1,4 +1,4 @@
-package win.yulongsun.utils.utils;
+package win.yulongsun.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

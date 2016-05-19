@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.utils.common.BaseToolbarActivity;
+import win.yulongsun.uiframework.BaseToolbarActivity;
 
 /**
  * PROJECT_NAME : ClubApp

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import win.yulongsun.clubapp.R;
 import win.yulongsun.component.cache.ACache;
-import win.yulongsun.utils.common.BaseActivity;
+import win.yulongsun.uiframework.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
 

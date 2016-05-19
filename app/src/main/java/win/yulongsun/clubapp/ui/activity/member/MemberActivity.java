@@ -29,9 +29,9 @@ import win.yulongsun.clubapp.net.response.MemberVoResponseList;
 import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.clubapp.ui.adapter.MemberRVAdapter;
 import win.yulongsun.component.cache.ACache;
-import win.yulongsun.utils.common.BaseToolbarActivity;
-import win.yulongsun.utils.utils.GsonUtils;
-import win.yulongsun.utils.utils.ToastUtils;
+import win.yulongsun.uiframework.BaseToolbarActivity;
+import win.yulongsun.utils.GsonUtils;
+import win.yulongsun.utils.ToastUtils;
 
 //会员
 public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshLayout.OnRefreshListener, OnItemClickListener, OnItemLongClickListener {

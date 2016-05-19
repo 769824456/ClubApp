@@ -34,8 +34,8 @@ import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.net.entity.ChartVo;
 import win.yulongsun.clubapp.net.response.ChartVoResponseList;
 import win.yulongsun.component.cache.ACache;
-import win.yulongsun.utils.utils.GsonUtils;
-import win.yulongsun.utils.utils.ToastUtils;
+import win.yulongsun.utils.GsonUtils;
+import win.yulongsun.utils.ToastUtils;
 
 public class DayFragment extends Fragment {
 

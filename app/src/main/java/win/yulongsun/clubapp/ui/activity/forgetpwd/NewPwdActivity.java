@@ -13,11 +13,11 @@ import okhttp3.Call;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.net.response.NullResponse;
+import win.yulongsun.uiframework.BaseToolbarActivity;
+import win.yulongsun.utils.GsonUtils;
 import win.yulongsun.utils.MD5Utils;
+import win.yulongsun.utils.ToastUtils;
 import win.yulongsun.utils.ValidateUtils;
-import win.yulongsun.utils.common.BaseToolbarActivity;
-import win.yulongsun.utils.utils.GsonUtils;
-import win.yulongsun.utils.utils.ToastUtils;
 
 //输入新密码
 public class NewPwdActivity extends BaseToolbarActivity {

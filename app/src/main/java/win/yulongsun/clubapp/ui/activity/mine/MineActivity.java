@@ -11,8 +11,8 @@ import butterknife.Bind;
 import de.hdodenhof.circleimageview.CircleImageView;
 import win.yulongsun.clubapp.R;
 import win.yulongsun.component.cache.ACache;
-import win.yulongsun.utils.common.BaseToolbarActivity;
 import win.yulongsun.component.image.ImageLoadManager;
+import win.yulongsun.uiframework.BaseToolbarActivity;
 
 /**
  * PROJECT_NAME : ClubApp

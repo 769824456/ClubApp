@@ -17,10 +17,10 @@ import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.net.error.ErrorHandler;
 import win.yulongsun.clubapp.net.response.NullResponse;
+import win.yulongsun.uiframework.BaseToolbarActivity;
+import win.yulongsun.utils.GsonUtils;
+import win.yulongsun.utils.ToastUtils;
 import win.yulongsun.utils.ValidateUtils;
-import win.yulongsun.utils.common.BaseToolbarActivity;
-import win.yulongsun.utils.utils.GsonUtils;
-import win.yulongsun.utils.utils.ToastUtils;
 
 /*
                    _ooOoo_
@@ -99,11 +99,15 @@ public class ForgetPwdActivity extends BaseToolbarActivity {
     }
 
 
+    /**
+     *
+     * @param view
+     */
     /*获取验证码*/
     public void btnGetCode(View view) {
         user_mobile = mEtForgetPwdMobile.getText().toString();
         if (!ValidateUtils.isMobilePattern(user_mobile)) {
-            ToastUtils.showMessage(ForgetPwdActivity.this, "手机号码不正确");
+//            ToastUtils.showMessage(ForgetPwdActivity.this, "手机号码不正确");
             return;
         }
         //  把按钮变成不可点击，并且显示倒计时（正在获取）

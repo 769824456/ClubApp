@@ -23,8 +23,8 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.utils.common.BaseToolbarActivity;
-import win.yulongsun.utils.utils.ToastUtils;
+import win.yulongsun.uiframework.BaseToolbarActivity;
+import win.yulongsun.utils.ToastUtils;
 
 //修改店员信息
 public class UserUpdateActivity extends BaseToolbarActivity {

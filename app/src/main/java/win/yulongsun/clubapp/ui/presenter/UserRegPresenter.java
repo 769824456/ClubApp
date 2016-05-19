@@ -11,11 +11,11 @@ import okhttp3.Call;
 import win.yulongsun.clubapp.common.Api;
 import win.yulongsun.clubapp.net.error.ErrorHandler;
 import win.yulongsun.clubapp.ui.view.IUserRegView;
+import win.yulongsun.uiframework.BasePresenter;
 import win.yulongsun.utils.MD5Utils;
+import win.yulongsun.utils.ToastUtils;
 import win.yulongsun.utils.ValidateUtils;
-import win.yulongsun.utils.common.BasePresenter;
 import win.yulongsun.component.response.ResponseObject;
-import win.yulongsun.utils.utils.ToastUtils;
 
 /**
  * PROJECT_NAME : ClubApp

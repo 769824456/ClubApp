@@ -1,4 +1,4 @@
-package win.yulongsun.utils.utils;
+package win.yulongsun.utils;
 
 //import com.xiecc.seeWeather.component.RetrofitSingleton;
 //import com.xiecc.seeWeather.modules.domain.Setting;

@@ -1,7 +1,7 @@
 package win.yulongsun.clubapp.ui.view;
 
 
-import win.yulongsun.utils.common.IBaseView;
+import win.yulongsun.uiframework.IBaseView;
 
 /*
  * PACKAGE_NAME :cn.ace.android_mvp.view
