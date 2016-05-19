@@ -9,7 +9,6 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import okhttp3.Call;
@@ -19,10 +18,10 @@ import win.yulongsun.clubapp.common.Constants;
 import win.yulongsun.clubapp.net.entity.MemberVo;
 import win.yulongsun.clubapp.net.response.MemberVoResponseList;
 import win.yulongsun.clubapp.ui.adapter.MemberHistoryRVAdapter;
-import win.yulongsun.yulongsunutils.cache.ACache;
-import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
-import win.yulongsun.yulongsunutils.utils.GsonUtils;
-import win.yulongsun.yulongsunutils.utils.ToastUtils;
+import win.yulongsun.component.cache.ACache;
+import win.yulongsun.utils.common.BaseToolbarActivity;
+import win.yulongsun.utils.utils.GsonUtils;
+import win.yulongsun.utils.utils.ToastUtils;
 
 //历史
 public class MemberHistoryActivity extends BaseToolbarActivity {

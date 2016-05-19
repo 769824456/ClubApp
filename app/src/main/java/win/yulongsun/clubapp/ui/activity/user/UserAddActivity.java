@@ -20,13 +20,11 @@ import android.widget.RadioGroup;
 import com.sw926.imagefileselector.ImageFileSelector;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.yulongsunutils.LogUtils;
-import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
-import win.yulongsun.yulongsunutils.utils.ToastUtils;
+import win.yulongsun.utils.common.BaseToolbarActivity;
+import win.yulongsun.utils.utils.ToastUtils;
 
 //添加店员
 public class UserAddActivity extends BaseToolbarActivity {

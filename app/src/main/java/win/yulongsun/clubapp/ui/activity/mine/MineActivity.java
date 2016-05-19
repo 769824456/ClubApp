@@ -1,6 +1,5 @@
 package win.yulongsun.clubapp.ui.activity.mine;
 
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
@@ -9,12 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import win.yulongsun.clubapp.R;
-import win.yulongsun.yulongsunutils.cache.ACache;
-import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
-import win.yulongsun.yulongsunutils.image.ImageLoadManager;
+import win.yulongsun.component.cache.ACache;
+import win.yulongsun.utils.common.BaseToolbarActivity;
+import win.yulongsun.component.image.ImageLoadManager;
 
 /**
  * PROJECT_NAME : ClubApp

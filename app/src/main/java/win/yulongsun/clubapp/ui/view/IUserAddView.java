@@ -1,6 +1,6 @@
 package win.yulongsun.clubapp.ui.view;
 
-import win.yulongsun.yulongsunutils.common.IBaseView;
+import win.yulongsun.utils.common.IBaseView;
 
 /**
  * PROJECT_NAME : ClubApp

@@ -3,7 +3,7 @@ package win.yulongsun.clubapp.net.response;
 import java.util.List;
 
 import win.yulongsun.clubapp.net.entity.MemberVo;
-import win.yulongsun.yulongsunutils.response.BaseResponse;
+import win.yulongsun.component.response.BaseResponse;
 
 /**
  * PROJECT_NAME : ClubApp

@@ -1,6 +1,6 @@
 package win.yulongsun.clubapp.net.response;
 
-import win.yulongsun.yulongsunutils.response.BaseResponse;
+import win.yulongsun.component.response.BaseResponse;
 
 /**
  * PROJECT_NAME : ClubApp

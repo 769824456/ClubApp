@@ -1,0 +1,1 @@
+组件库，如cache、gif、ClassLoaderInjecter、Log、SP、Web等。

@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import win.yulongsun.clubapp.R;
-import win.yulongsun.yulongsunutils.cache.ACache;
-import win.yulongsun.yulongsunutils.common.BaseActivity;
+import win.yulongsun.component.cache.ACache;
+import win.yulongsun.utils.common.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
 

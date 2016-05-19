@@ -31,11 +31,11 @@ import win.yulongsun.clubapp.ui.activity.statistics.StatisticsActivity;
 import win.yulongsun.clubapp.ui.activity.user.UserActivity;
 import win.yulongsun.clubapp.ui.adapter.HomeRVAdapter;
 import win.yulongsun.clubapp.utils.LocalImageHolderView;
-import win.yulongsun.yulongsunutils.DividerItemDecoration;
-import win.yulongsun.yulongsunutils.cache.ACache;
-import win.yulongsun.yulongsunutils.common.BaseActivity;
-import win.yulongsun.yulongsunutils.image.ImageLoadManager;
-import win.yulongsun.yulongsunutils.utils.ResUtils;
+import win.yulongsun.utils.DividerItemDecoration;
+import win.yulongsun.component.cache.ACache;
+import win.yulongsun.utils.common.BaseActivity;
+import win.yulongsun.component.image.ImageLoadManager;
+import win.yulongsun.utils.utils.ResUtils;
 
 /**
  * 主页

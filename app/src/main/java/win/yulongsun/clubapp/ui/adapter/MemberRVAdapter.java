@@ -10,7 +10,6 @@ import java.util.List;
 
 import win.yulongsun.clubapp.R;
 import win.yulongsun.clubapp.net.entity.MemberVo;
-import win.yulongsun.yulongsunutils.utils.DateUtil;
 
 /**
  * PROJECT_NAME : ClubApp

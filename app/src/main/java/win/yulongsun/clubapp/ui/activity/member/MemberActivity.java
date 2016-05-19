@@ -18,7 +18,6 @@ import org.byteam.superadapter.OnItemClickListener;
 import org.byteam.superadapter.OnItemLongClickListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import okhttp3.Call;
@@ -29,10 +28,10 @@ import win.yulongsun.clubapp.net.entity.MemberVo;
 import win.yulongsun.clubapp.net.response.MemberVoResponseList;
 import win.yulongsun.clubapp.net.response.NullResponse;
 import win.yulongsun.clubapp.ui.adapter.MemberRVAdapter;
-import win.yulongsun.yulongsunutils.cache.ACache;
-import win.yulongsun.yulongsunutils.common.BaseToolbarActivity;
-import win.yulongsun.yulongsunutils.utils.GsonUtils;
-import win.yulongsun.yulongsunutils.utils.ToastUtils;
+import win.yulongsun.component.cache.ACache;
+import win.yulongsun.utils.common.BaseToolbarActivity;
+import win.yulongsun.utils.utils.GsonUtils;
+import win.yulongsun.utils.utils.ToastUtils;
 
 //会员
 public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshLayout.OnRefreshListener, OnItemClickListener, OnItemLongClickListener {

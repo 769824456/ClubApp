@@ -25,13 +25,13 @@ dependencies {
     /*轮播图片 https://github.com/saiwu-bigkoo/Android-ConvenientBanner*/
     compile files('libs/mpandroidchartlibrary-2-2-4.jar')
     /*头像*/
-    compile project(':yulongsun_utils')
+    compile project(':lib_utils')
     compile project(':yulongsun_pulltorefresh')
     /*https://github.com/android-cjj/Android-MaterialRefreshLayout/blob/master/README-cn.md*/
     //    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
-    compile project(':material_refresh_layout_library')
+    compile project(':lib_material_refresh_layout')
     //    compile 'org.byteam.superadapter:superadapter:3.1@aar'
-    compile project(':superadapter')
+    compile project(':lib_adapter')
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:cardview-v7:23.3.0'
@@ -42,4 +42,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okio:okio:1.8.0'
     compile 'com.android.support:support-v4:23.3.0'
+    compile project(':lib_component')
+    compile project(':lib_uiframework')
 }
