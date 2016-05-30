@@ -43,7 +43,7 @@ public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
         String mobile = iView.getMobile();
         String pwd    = iView.getPwd();
         if (!ValidateUtils.isMobilePattern(mobile)) {
-            ToastUtils.showMessage(context, ToastUtils.ERROR_PHONE);
+            ToastUtils.showMessage(context, ToastUtils.ERROR_MOBILE);
             return;
         }
         if (!ValidateUtils.isPwdValid(pwd)) {
@@ -91,7 +91,7 @@ public class UserLoginPresenter extends BasePresenter<IUserLoginView> {
         aCache.put(Constants.USER_GENDER, mUserVo.gender + "");
         aCache.put(Constants.USER_JOB_ID, mUserVo.job_id + "");
         aCache.put(Constants.USER_C_ID, mUserVo.c_id + "");
-        aCache.put("user_r_id", mUserVo.r_id + "");
+        aCache.put(Constants.USER_R_ID, mUserVo.r_id + "");
         aCache.put("user_is_enable", mUserVo.is_enable + "");
         aCache.put(Constants.IS_LOGIN, "1");
     }

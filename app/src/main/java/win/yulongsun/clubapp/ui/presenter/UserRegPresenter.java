@@ -48,7 +48,7 @@ public class UserRegPresenter extends BasePresenter<IUserRegView> {
             return;
         }
         if (!ValidateUtils.isMobilePattern(managerMobile)) {
-            ToastUtils.showMessage(context, ToastUtils.ERROR_PHONE);
+            ToastUtils.showMessage(context, ToastUtils.ERROR_MOBILE);
             return;
         }
         if (ValidateUtils.isTextNull(clubAddr)) {

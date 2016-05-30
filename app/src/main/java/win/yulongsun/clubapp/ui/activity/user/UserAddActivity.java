@@ -1,14 +1,10 @@
 package win.yulongsun.clubapp.ui.activity.user;
 
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,13 +14,25 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.sw926.imagefileselector.ImageFileSelector;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.io.File;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.Call;
 import win.yulongsun.clubapp.R;
+import win.yulongsun.clubapp.common.Api;
+import win.yulongsun.clubapp.common.Constants;
+import win.yulongsun.clubapp.net.response.NullResponse;
+import win.yulongsun.component.cache.ACache;
 import win.yulongsun.uiframework.BaseToolbarActivity;
+import win.yulongsun.utils.GsonUtils;
+import win.yulongsun.utils.MD5Utils;
 import win.yulongsun.utils.ToastUtils;
+import win.yulongsun.utils.ValidateUtils;
 
 //添加店员
 public class UserAddActivity extends BaseToolbarActivity {
@@ -33,7 +41,7 @@ public class UserAddActivity extends BaseToolbarActivity {
     private static final int PHOTO_ALBUM_REQUEST = 0;
     @Bind(R.id.tl_user_add)        Toolbar           mTlUserAdd;
     @Bind(R.id.civ_user_add)       CircleImageView   mCivUserAdd;
-    @Bind(R.id.et_user_add_phone)  EditText          mEtUserAddPhone;
+    @Bind(R.id.et_user_add_mobile) EditText          mEtUserAddMobile;
     @Bind(R.id.et_user_add_pwd)    EditText          mEtUserAddPwd;
     @Bind(R.id.et_user_add_job_id) EditText          mEtUserAddJobId;
     @Bind(R.id.et_user_add_name)   EditText          mEtUserAddName;
@@ -42,7 +50,9 @@ public class UserAddActivity extends BaseToolbarActivity {
     @Bind(R.id.rb_user_add_girl)   RadioButton       mRbUserAddGirl;
     @Bind(R.id.rg_user_add_gender) RadioGroup        mRgUserAddGender;
     private                        ImageFileSelector mImageFileSelector;
-    private String TAG = UserAddActivity.class.getSimpleName();
+    private                        String            user_avatar;
+    private String TAG         = UserAddActivity.class.getSimpleName();
+    private int    user_gender = 1;
 
     @Override public int getLayoutResId() {
         return R.layout.activity_user_add;
@@ -64,9 +74,69 @@ public class UserAddActivity extends BaseToolbarActivity {
     @Override public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_done) {
+            addUser();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addUser() {
+        String user_mobile = mEtUserAddMobile.getText().toString();
+        String user_pwd    = mEtUserAddPwd.getText().toString();
+        String user_job_id = mEtUserAddJobId.getText().toString();
+        String user_addr   = mEtUserAddAddr.getText().toString();
+        String user_name   = mEtUserAddName.getText().toString();
+        String user_c_id   = ACache.get(this).getAsString(Constants.USER_C_ID);
+        if (!ValidateUtils.isMobilePattern(user_mobile)) {
+            ToastUtils.showMessage(UserAddActivity.this, ToastUtils.ERROR_MOBILE);
+            return;
+        }
+        if (!ValidateUtils.isPwdValid(user_pwd)) {
+            ToastUtils.showMessage(UserAddActivity.this, ToastUtils.ERROR_PWD);
+            return;
+        }
+        if (ValidateUtils.isTextNull(user_job_id)) {
+            ToastUtils.showMessage(UserAddActivity.this, "工号不能为空");
+            return;
+        }
+        if (ValidateUtils.isTextNull(user_avatar)) {
+            ToastUtils.showMessage(UserAddActivity.this, "头像不能为空");
+            return;
+        }
+        if (ValidateUtils.isTextNull(user_name)) {
+            ToastUtils.showMessage(UserAddActivity.this, "用户名不能为空");
+            return;
+        }
+
+        showLoading("添加中....");
+        OkHttpUtils.post().url(Api.HOST + Api.USER + "addUser")
+                .addFile("user_avatar", user_mobile + ".jpg",new File(user_avatar))
+                .addParams("user_mobile", user_mobile)
+                .addParams("user_pwd", MD5Utils.getMD5Str(user_pwd))
+                .addParams("user_gender", user_gender+"")
+                .addParams("user_addr", user_addr)
+                .addParams("user_job_id", user_job_id)
+                .addParams("user_c_id", user_c_id)
+                .addParams("user_name", user_name)
+                .build()
+                .execute(new StringCallback() {
+                    @Override public void onError(Call call, Exception e) {
+                        hideLoading();
+                        e.printStackTrace();
+                    }
+
+                    @Override public void onResponse(String response) {
+                        hideLoading();
+                        Log.d(TAG, "onResponse: " + response);
+                        NullResponse baseResponse = GsonUtils.parseToBean(response, NullResponse.class);
+                        if (baseResponse.errorCode == 0) {
+                            ToastUtils.showMessage(UserAddActivity.this, "添加成功");
+                            UserAddActivity.this.finish();
+                        } else {
+                            ToastUtils.showMessage(UserAddActivity.this, baseResponse.errorMsg);
+                        }
+                    }
+                });
     }
 
     @Override protected void initListeners() {
@@ -75,8 +145,10 @@ public class UserAddActivity extends BaseToolbarActivity {
         mRgUserAddGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == mRbUserAddBoy.getId()) {
+                    user_gender = 1;
                     Log.d(TAG, "onCheckedChanged: boy");
                 } else {
+                    user_gender = 0;
                     Log.d(TAG, "onCheckedChanged: girl");
                 }
             }
@@ -87,6 +159,7 @@ public class UserAddActivity extends BaseToolbarActivity {
         mImageFileSelector.setCallback(new ImageFileSelector.Callback() {
             @Override
             public void onSuccess(final String file) { // 选取图片成功
+                user_avatar = file;
                 Bitmap bitmap = BitmapFactory.decodeFile(file);
                 mCivUserAdd.setImageBitmap(bitmap);
             }
@@ -106,13 +179,7 @@ public class UserAddActivity extends BaseToolbarActivity {
                 switch (which) {
                     case TAKE_PHOTO_REQUEST://拍照
                         // 拍照选取
-                        if (ContextCompat.checkSelfPermission(UserAddActivity.this, Manifest.permission.CAMERA)
-                                != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(UserAddActivity.this, new String[]{Manifest.permission.CAMERA},
-                                    9);
-                        } else {
-                            mImageFileSelector.takePhoto(UserAddActivity.this);
-                        }
+                        mImageFileSelector.takePhoto(UserAddActivity.this);
                         break;
                     case PHOTO_ALBUM_REQUEST://相册
                         // 从文件选取

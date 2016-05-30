@@ -83,7 +83,11 @@ public class MemberActivity extends BaseToolbarActivity implements SwipeRefreshL
         mMemberRVAdapter = new MemberRVAdapter(MemberActivity.this, mMemberVosList, R.layout.item_rv_member);
         mRvMember.setAdapter(mMemberRVAdapter);
         mMemberRVAdapter.setOnItemClickListener(this);
-        mMemberRVAdapter.setOnItemLongClickListener(this);
+        //
+        String user_r_id = ACache.get(this).getAsString(Constants.USER_R_ID);
+        if ("1".equals(user_r_id)) {
+            mMemberRVAdapter.setOnItemLongClickListener(this);
+        }
     }
 
     @Override protected void initDatas() {

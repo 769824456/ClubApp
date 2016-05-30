@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,6 +56,7 @@ public class HomeActivity extends BaseActivity
     TextView     mTvNavHeaderName;
     private ArrayList<Integer> mLocalImages;
     private MenuItem           mMenuItemNavUser;
+    private String TAG=HomeActivity.class.getSimpleName();
 
     @Override public int getLayoutResId() {
         return R.layout.activity_home;
@@ -134,7 +136,7 @@ public class HomeActivity extends BaseActivity
         String user_name   = ACache.get(HomeActivity.this).getAsString("user_name");
         String user_avatar = ACache.get(HomeActivity.this).getAsString("user_avatar");
         String user_r_id   = ACache.get(HomeActivity.this).getAsString("user_r_id");
-
+        Log.d(TAG, "initDatas: user_avatar="+user_avatar);
         ImageLoadManager.getInstance().with(HomeActivity.this).load(user_avatar).setError(R.mipmap.ic_launcher).into(mIvNavHeaderAvatar);
         mTvNavHeaderName.setText(user_name);
         mMenuItemNavUser.setVisible("1".equals(user_r_id) ? true : false);

@@ -58,7 +58,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         mProgDialog.setMessage(tip);
         beginMillis = System.currentTimeMillis();
         mProgDialog.show();
-
+    }
+    public void showLoading(String tip,boolean cancelable) {
+        mProgDialog.setMessage(tip);
+        beginMillis = System.currentTimeMillis();
+        mProgDialog.setCancelable(true);
+        mProgDialog.show();
     }
 
     /*隐藏对话框*/

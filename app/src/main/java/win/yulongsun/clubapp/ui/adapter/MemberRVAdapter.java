@@ -36,6 +36,26 @@ public class MemberRVAdapter extends SuperAdapter<MemberVo> {
             holder.setImageBitmap(R.id.iv_item_member_gender, BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.ic_gender_boy));
         }
         holder.setText(R.id.tv_item_member_create_time, item.create_time + "");
+        String rankStr = "";
+        switch (item.rank) {
+            case 0:
+                rankStr = "普通";
+                break;
+            case 1:
+                rankStr = "青铜";
+                break;
+            case 2:
+                rankStr = "白银";
+                break;
+            case 3:
+                rankStr = "黄金";
+                break;
+            case 4:
+                rankStr = "钻石";
+                break;
+        }
+        holder.setText(R.id.tv_item_member_rank, rankStr);
+        holder.setText(R.id.tv_item_member_money, "余额:"+item.money+"元");
 
     }
 //    private List<MemberVo> mList;

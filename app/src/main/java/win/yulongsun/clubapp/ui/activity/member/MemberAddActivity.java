@@ -87,7 +87,7 @@ public class MemberAddActivity extends BaseToolbarActivity {
     private void addMember() {
         String member_name    = mEtMemberAddName.getText().toString();
         String member_mobile  = mEtMemberAddMobile.getText().toString();
-        String member_score   = mEtMemberAddScore.getText().toString();
+//        String member_score   = mEtMemberAddScore.getText().toString();
         int    member_rank    = mSpMemberAddRank.getSelectedItemPosition();
         String member_card_id = mEtMemberAddCardId.getText().toString();
         String member_addr    = mEtMemberAddAddr.getText().toString();
@@ -96,13 +96,13 @@ public class MemberAddActivity extends BaseToolbarActivity {
             return;
         }
         if (!ValidateUtils.isMobilePattern(member_mobile)) {
-            ToastUtils.showMessage(MemberAddActivity.this, ToastUtils.ERROR_PHONE);
+            ToastUtils.showMessage(MemberAddActivity.this, ToastUtils.ERROR_MOBILE);
             return;
         }
-        if (ValidateUtils.isTextNull(member_score)) {
-            ToastUtils.showMessage(MemberAddActivity.this, "积分不能为空");
-            return;
-        }
+//        if (ValidateUtils.isTextNull(member_score)) {
+//            ToastUtils.showMessage(MemberAddActivity.this, "积分不能为空");
+//            return;
+//        }
         if (ValidateUtils.isTextNull(member_card_id)) {
             ToastUtils.showMessage(MemberAddActivity.this, "消费卡编号不能为空");
             return;
@@ -112,10 +112,10 @@ public class MemberAddActivity extends BaseToolbarActivity {
         String member_c_id        = ACache.get(MemberAddActivity.this).getAsString("user_c_id");
         showLoading("添加中....");
         OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "addMember")
-                .addFile("member_avatar", "member_avatar", new File(member_avatar))
+                .addFile("member_avatar", member_mobile + ".jpg", new File(member_avatar))
                 .addParams("member_name", member_name)
                 .addParams("member_mobile", member_mobile)
-                .addParams("member_score", member_score)
+//                .addParams("member_score", member_score)
                 .addParams("member_rank", member_rank + "")
                 .addParams("member_addr", member_addr)
                 .addParams("member_card_id", member_card_id)
@@ -183,13 +183,7 @@ public class MemberAddActivity extends BaseToolbarActivity {
                 switch (which) {
                     case Constants.TAKE_PHOTO_REQUEST://拍照
                         // 拍照选取
-                        if (ContextCompat.checkSelfPermission(MemberAddActivity.this, Manifest.permission.CAMERA)
-                                != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(MemberAddActivity.this, new String[]{Manifest.permission.CAMERA},
-                                    9);
-                        } else {
-                            mImageFileSelector.takePhoto(MemberAddActivity.this);
-                        }
+                        mImageFileSelector.takePhoto(MemberAddActivity.this);
                         break;
                     case Constants.PHOTO_ALBUM_REQUEST://相册
                         // 从文件选取

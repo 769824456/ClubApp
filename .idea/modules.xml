@@ -4,16 +4,16 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ClubApp.iml" filepath="$PROJECT_DIR$/ClubApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_adapter/superadapter.iml" filepath="$PROJECT_DIR$/lib_adapter/superadapter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_authorize/lib_authorize.iml" filepath="$PROJECT_DIR$/lib_authorize/lib_authorize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_adapter/lib_adapter.iml" filepath="$PROJECT_DIR$/lib_adapter/lib_adapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_component/lib_component.iml" filepath="$PROJECT_DIR$/lib_component/lib_component.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_im/lib_im.iml" filepath="$PROJECT_DIR$/lib_im/lib_im.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_material_refresh_layout/material_refresh_layout_library.iml" filepath="$PROJECT_DIR$/lib_material_refresh_layout/material_refresh_layout_library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_share/lib_share.iml" filepath="$PROJECT_DIR$/lib_share/lib_share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_material_refresh_layout/lib_material_refresh_layout.iml" filepath="$PROJECT_DIR$/lib_material_refresh_layout/lib_material_refresh_layout.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_uiframework/lib_uiframework.iml" filepath="$PROJECT_DIR$/lib_uiframework/lib_uiframework.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_uikit/lib_uikit.iml" filepath="$PROJECT_DIR$/lib_uikit/lib_uikit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_utils/yulongsun_utils.iml" filepath="$PROJECT_DIR$/lib_utils/yulongsun_utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_material_refresh_layout/material_refresh_layout_library.iml" filepath="$PROJECT_DIR$/lib_material_refresh_layout/material_refresh_layout_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_adapter/superadapter.iml" filepath="$PROJECT_DIR$/lib_adapter/superadapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/yulongsun_pulltorefresh/yulongsun_pulltorefresh.iml" filepath="$PROJECT_DIR$/yulongsun_pulltorefresh/yulongsun_pulltorefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_utils/yulongsun_utils.iml" filepath="$PROJECT_DIR$/lib_utils/yulongsun_utils.iml" />
     </modules>
   </component>
 </project>

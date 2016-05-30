@@ -45,7 +45,7 @@
                     android:src="@mipmap/ic_login_account"/>
 
                 <EditText
-                    android:id="@+id/et_user_add_phone"
+                    android:id="@+id/et_user_add_mobile"
                     style="@style/UserAddPageEditText"
                     android:hint="手机号"
                     android:inputType="phone"/>
@@ -112,7 +112,7 @@
                     android:id="@+id/et_user_add_name"
                     style="@style/UserAddPageEditText"
                     android:hint="用户名"
-                    android:inputType="phone"/>
+                    />
 
             </LinearLayout>
 
@@ -169,7 +169,7 @@
                     android:id="@+id/et_user_add_addr"
                     style="@style/UserAddPageEditText"
                     android:hint="地址"
-                    android:inputType="phone"/>
+                    />
 
             </LinearLayout>
 

@@ -40,6 +40,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center_vertical"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -67,7 +69,7 @@
                         android:layout_width="@dimen/ic_login"
                         android:layout_height="@dimen/ic_login"
                         android:layout_marginRight="20dp"
-                        android:src="@mipmap/ic_login_pwd"/>
+                        android:src="@mipmap/ic_mobile"/>
 
                     <EditText
                         android:id="@+id/et_member_add_mobile"
@@ -83,6 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:visibility="gone"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -97,6 +100,7 @@
                         style="@style/MemberAddPageEditText"
                         android:hint="积分"
                         android:inputType="number"
+
                         android:maxLength="5"/>
 
                 </LinearLayout>

@@ -80,7 +80,7 @@ public class MemberSearchActivity extends BaseToolbarActivity implements TextVie
     private void loadDataFromCloud(String name) {
         ACache aCache    = ACache.get(this);
         String user_c_id = aCache.getAsString("user_c_id");
-        showLoading("搜索中...");
+        showLoading("搜索中...",true);
         OkHttpUtils.post()
                 .url(Api.HOST + Api.MEMBER + "queryMember")
                 .addParams("member_c_id", user_c_id)

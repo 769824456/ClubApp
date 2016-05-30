@@ -1,1 +1,1 @@
-include ':app', ':lib_utils', ':yulongsun_pulltorefresh', ':lib_material_refresh_layout', ':lib_adapter', ':lib_uiframework', ':lib_component', ':lib_uikit', ':lib_im', ':lib_authorize', ':lib_share'
+include ':app', ':lib_utils', ':yulongsun_pulltorefresh', ':lib_material_refresh_layout', ':lib_adapter', ':lib_uiframework', ':lib_component', ':lib_uikit'

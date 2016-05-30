@@ -176,8 +176,8 @@ public class UserActivity extends BaseToolbarActivity implements OnItemClickList
         new AlertDialog.Builder(UserActivity.this).setMessage("你确定要删除" + mUserVoList.get(position).name + "吗?")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialog, int which) {
-                        OkHttpUtils.post().url(Api.HOST + Api.MEMBER + "deleteMember")
-                                .addParams("member_id", mUserVoList.get(position).id + "")
+                        OkHttpUtils.post().url(Api.HOST + Api.USER + "deleteUser")
+                                .addParams("user_id", mUserVoList.get(position).id + "")
                                 .build()
                                 .execute(new StringCallback() {
                                     @Override public void onError(Call call, Exception e) {

@@ -22,10 +22,10 @@ import win.yulongsun.utils.LogUtils;
 
 public class ToastUtils {
 
-    public static final String ERROR_PWD   = "密码长度为6-16位！";
-    public static final String ERROR_NAME  = "用户名长度不正确！";
-    public static final String ERROR_EMAIL = "邮箱格式不正确！";
-    public static final String ERROR_PHONE = "手机号码不正确！";
+    public static final String ERROR_PWD    = "密码长度为6-16位！";
+    public static final String ERROR_NAME   = "用户名长度不正确！";
+    public static final String ERROR_EMAIL  = "邮箱格式不正确！";
+    public static final String ERROR_MOBILE = "手机号码不正确！";
 
     private static Handler handler = new Handler(Looper.getMainLooper());
 

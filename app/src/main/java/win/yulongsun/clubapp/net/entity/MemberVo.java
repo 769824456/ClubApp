@@ -13,6 +13,7 @@ public class MemberVo {
     public String mobile;
     public String addr;
     public int    score;
+    public double money;
     public int    rank;
     public int    card_id;
     public int    gender;
@@ -21,6 +22,7 @@ public class MemberVo {
     public int    is_enable;
     public String create_time;
     public double num;//消费额
+    public int    type;
 
     public MemberVo() {
     }

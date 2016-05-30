@@ -49,7 +49,7 @@ public class SplashActivity extends BaseActivity {
             @Override public void run() {
                 String is_login    = ACache.get(SplashActivity.this).getAsString("is_login");
                 Class  targetClass = null;
-                if ("0".equals(is_login)) {
+                if (is_login==null||"0".equals(is_login)) {
                     targetClass = LoginActivity.class;
                 } else {
                     targetClass = HomeActivity.class;

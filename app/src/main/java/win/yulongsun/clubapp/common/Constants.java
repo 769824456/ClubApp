@@ -9,7 +9,7 @@ package win.yulongsun.clubapp.common;
 public interface Constants {
     int    TAKE_PHOTO_REQUEST  = 1;
     int    PHOTO_ALBUM_REQUEST = 0;
-    int    PAGE_SIZE           = 10;
+    int    PAGE_SIZE           = 20;
     String USER_ID             = "user_id";
     String USER_C_ID           = "user_c_id";
     String USER_NAME           = "user_name";
@@ -19,4 +19,5 @@ public interface Constants {
     String USER_GENDER         = "user_gender";
     String USER_JOB_ID         = "user_job_id";
     String IS_LOGIN            = "is_login";
+    String USER_R_ID           = "user_r_id";
 }
